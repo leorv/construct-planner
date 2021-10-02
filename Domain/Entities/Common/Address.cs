@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities.Bidding;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,8 @@ namespace Domain.Entities.Common
         public string City {  get; set; }
         public string State {  get; set; }
         public string Country {  get; set; }
+        // Relações
+        public long SpreadsheetId { get; set; }
+        public Spreadsheet Spreadsheet {  get; set; }
     }
 }

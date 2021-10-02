@@ -15,6 +15,10 @@ namespace Domain.Entities.Bidding.PriceReference
         public int Year { get; set; }
         public string SourceFamily { get; set; }
         public string EncumberType { get; set; }
+        // Relações
+        public ICollection<Input> Inputs { get; set; }
+        public ICollection<SourceItem> SourceItems { get; set; }
+
 
     }
 }

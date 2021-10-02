@@ -8,7 +8,11 @@ namespace Domain.Entities.Bidding
 {
     public class Level
     {
-        public long Id {  get; set; }
-        public string Name {  get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+        // Relações
+        public long SpreadsheetId { get; set; }
+        public ICollection<SpreadsheetItem> SpreadsheetItems { get; set; }
+
     }
 }

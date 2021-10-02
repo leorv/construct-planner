@@ -16,7 +16,10 @@ namespace Domain.Entities.Bidding
         public string Justification { get; set; }
         public decimal TotalValue { get; set; }
 
-        // TODO: Relacionamento do aditivivo.
+        public long ContractId { get; set; }
+        public Contract Contract { get; set; }
+        public ICollection<Clause> Clauses {  get; set; }
+        public Spreadsheet Spreadsheet {  get; set; }
 
     }
 

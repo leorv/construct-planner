@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Bidding
 {
-    public class Contract
+    public class Contract : Entity
     {
         public long Id { get; set; }
         public string Name {  get; set; } // Para controle do usuário.
@@ -18,8 +18,25 @@ namespace Domain.Entities.Bidding
         public DateTime Date { get; set; }
         public string Comments { get; set; }
 
-        // TODO: Relacionamentos do Contrato.
+        public ICollection<Clause> Clauses { get; set; }
+        public ICollection<Additive> Additives { get; set; }
+        public ICollection<Spreadsheet> Spreadsheets { get; set; }
+
+        public override void Validate()
+        {
+            ClearValidateMessages();
+            
+            if (!Clauses.Any())
+            {
+                MessageValidation.Add("Aviso: Não há cláusulas no contrato.");
+            }
+            if (Number <= 0)
+            {
+                MessageValidation.Add("Verifique a numeração do contrato.");
+            }
 
 
+            //throw new NotImplementedException();
+        }
     }
 }

@@ -15,5 +15,9 @@ namespace Domain.Entities.Bidding.PriceReference
         public decimal ManPower { get; set; }
         public decimal Material { get; set; }
         public decimal TotalUnitValue {  get; set; }
+        // Relações
+        public long SourceId { get; set; }
+        public Source Source { get; set; }
+        public ICollection<Input> Inputs { get; set; }
     }
 }
