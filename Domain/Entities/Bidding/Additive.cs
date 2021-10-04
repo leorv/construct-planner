@@ -16,10 +16,17 @@ namespace Domain.Entities.Bidding
         public string Justification { get; set; }
         public decimal TotalValue { get; set; }
 
+        // Abaixo para lógica de posse, participantes e concordâncias.
+        public long AdditiveOwner { get; set; }
+        public ICollection<long> Participants { get; set; }
+        public ICollection<long> Agreements { get; set; }
+        public bool Closed { get; set; }
+
+        // Relações
         public long ContractId { get; set; }
-        public Contract Contract { get; set; }
-        public ICollection<Clause> Clauses {  get; set; }
-        public Spreadsheet Spreadsheet {  get; set; }
+        public virtual Contract Contract { get; set; }
+        public virtual ICollection<Clause> Clauses {  get; set; }
+        public virtual Spreadsheet Spreadsheet {  get; set; }
 
     }
 

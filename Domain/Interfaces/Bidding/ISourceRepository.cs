@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Bidding
 {
-    public interface IBDIRepository : IRepository<BDI>
+    public interface ISourceRepository : IRepository<Source>
     {
     }
 }

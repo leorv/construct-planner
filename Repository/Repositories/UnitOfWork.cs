@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Bidding;
+using Domain.Interfaces;
 using Repository.Context;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,7 @@ namespace Repository.Repositories
                 {
                     sourceItemRepository = new SourceItemRepository(context);
                 }
+                return sourceItemRepository;
 
             }
         }

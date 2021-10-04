@@ -11,7 +11,10 @@ namespace Domain.Entities.Bidding
         public long Id { get; set; }
         public string Number { get; set; }
         public string Text { get; set; }
-        // Relações
+
+        public ICollection<long> Agreements { get; set; }
+        public bool Closed { get; set; }
+
         public long ContractId { get; set; }
         public Contract Contract {  get; set; }
         public long AdditiveID { get; set; }

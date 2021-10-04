@@ -18,9 +18,9 @@ namespace Domain.Entities.Bidding
         public DateTime Date { get; set; }
         public string Comments { get; set; }
 
-        public ICollection<Clause> Clauses { get; set; }
-        public ICollection<Additive> Additives { get; set; }
-        public ICollection<Spreadsheet> Spreadsheets { get; set; }
+        public virtual ICollection<Clause> Clauses { get; set; }
+        public virtual ICollection<Additive> Additives { get; set; }
+        public virtual ICollection<Spreadsheet> Spreadsheets { get; set; }
 
         public override void Validate()
         {

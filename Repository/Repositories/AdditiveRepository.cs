@@ -1,5 +1,5 @@
 ﻿using Domain.Entities.Bidding;
-using Domain.Interfaces;
+using Domain.Interfaces.Bidding;
 using Repository.Context;
 using System;
 using System.Collections.Generic;
