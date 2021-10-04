@@ -1,5 +1,7 @@
 ﻿using Domain.Entities.Bidding.PriceReference;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Repository.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +12,12 @@ namespace Repository.Repositories
 {
     public class BDIRepository : Repository<BDI>, IBDIRepository
     {
+        public ConstructContext ConstructContext
+        {
+            get { return Context as ConstructContext; }
+        }
+        public BDIRepository(DbContext context) : base(context)
+        {
+        }
     }
 }

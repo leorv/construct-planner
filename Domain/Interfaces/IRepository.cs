@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    // TODO: implementar IDisposable no IRepository??
-    public interface IRepository<TEntity> where TEntity : class
+    // TODO: implementar IDisposable no IRepository?? Macoratti deixou sem.
+    public interface IRepository<TEntity> /*: IDisposable*/ where TEntity : class
     {
         TEntity Get(long? id);
         IEnumerable<TEntity> GetAll();

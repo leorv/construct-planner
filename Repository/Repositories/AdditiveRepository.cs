@@ -1,5 +1,6 @@
 ﻿using Domain.Entities.Bidding;
 using Domain.Interfaces;
+using Repository.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,14 @@ namespace Repository.Repositories
 {
     public class AdditiveRepository : Repository<Additive>, IAdditiveRepository
     {
-        public AdditiveRepository()
+        public ConstructContext ConstructContext
+        {
+            get { return Context as  ConstructContext; }
+        }
+        public AdditiveRepository(ConstructContext context) : base(context)
         {
         }
+
+        
     }
 }

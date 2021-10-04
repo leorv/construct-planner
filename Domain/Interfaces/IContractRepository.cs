@@ -9,5 +9,6 @@ namespace Domain.Interfaces
 {
     public interface IContractRepository : IRepository<Contract>
     {
+        // Implementar aqui os métodos e regras de negócios do contrato.
     }
 }

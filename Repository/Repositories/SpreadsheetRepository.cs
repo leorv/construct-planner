@@ -1,5 +1,6 @@
 ﻿using Domain.Entities.Bidding;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,8 @@ namespace Repository.Repositories
 {
     public class SpreadsheetRepository : Repository<Spreadsheet>, ISpreadsheetRepository
     {
+        public SpreadsheetRepository(DbContext context) : base(context)
+        {
+        }
     }
 }

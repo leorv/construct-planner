@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,48 +11,64 @@ namespace Repository.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public Repository()
-        {
+        protected readonly DbContext Context;
+        internal DbSet<TEntity> dbset;
 
-        }
-        public void Add(TEntity entity)
+        public Repository(DbContext context)
         {
-            throw new NotImplementedException();
-        }
+            Context = context;
+            dbset = context.Set<TEntity>();
+        }        
 
-        public void AddRange(IEnumerable<TEntity> entities)
+        public TEntity Get(long? id)
         {
-            throw new NotImplementedException();
+            return dbset.Find(id);
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
-        }
-
-        public TEntity Get(long? id)
-        {
-            throw new NotImplementedException();
+            return dbset.Where(predicate);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return dbset.ToList();
+        }
+
+        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return dbset.SingleOrDefault(predicate);
+        }
+
+        public void Add(TEntity entity)
+        {
+            dbset.Add(entity);
+        }
+
+        public void AddRange(IEnumerable<TEntity> entities)
+        {
+            dbset.AddRange(entities);
         }
 
         public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            dbset.Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            dbset.RemoveRange(entities);
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            dbset.Attach(entity);
+            Context.Entry(entity).State = EntityState.Modified;
         }
+
+        //public void Dispose()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

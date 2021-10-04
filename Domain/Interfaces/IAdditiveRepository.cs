@@ -9,5 +9,6 @@ namespace Domain.Interfaces
 {
     public interface IAdditiveRepository : IRepository<Additive>
     {
+        // TODO: Implementar regras de negócio e métodos do AdditiveRepository.
     }
 }
