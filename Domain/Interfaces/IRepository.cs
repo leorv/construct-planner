@@ -10,12 +10,14 @@ namespace Domain.Interfaces
     // TODO: implementar IDisposable no IRepository?? Macoratti deixou sem.
     public interface IRepository<TEntity> /*: IDisposable*/ where TEntity : class
     {
-        TEntity Get(long? id);
-        IEnumerable<TEntity> GetAll();
+        Task<TEntity> GetAsync(long? id);
+        Task<IEnumerable<TEntity>> GetAllAsync();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
-        void Add(TEntity entity);
-        void AddRange(IEnumerable<TEntity> entities);
+        Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
+
+        void AddAsync(TEntity entity);
+        void AddRangeAsync(IEnumerable<TEntity> entities);
 
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);

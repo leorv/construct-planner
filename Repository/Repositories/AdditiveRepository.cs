@@ -19,6 +19,8 @@ namespace Repository.Repositories
         {
         }
 
-        
+        // Aqui implementamos os métodos específicos de Additives. Por exemplo, GetDetalhes. etc.
+
+
     }
 }

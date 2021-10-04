@@ -20,39 +20,42 @@ namespace Repository.Repositories
             dbset = context.Set<TEntity>();
         }        
 
-        public TEntity Get(long? id)
+        public async Task<TEntity> GetAsync(long? id)
         {
-            return dbset.Find(id);
+            return await dbset.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        {
+            return await dbset.ToListAsync();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
+            // TODO: Estudar o funcionamento do método FindAsync do dbset.
+            // Assim, verificar se a implementação abaixo seria boa, ou se
+            // existe uma maneira melhor de implementar.
             return dbset.Where(predicate);
+        }        
+
+        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await dbset.SingleOrDefaultAsync(predicate);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public async void AddAsync(TEntity entity)
         {
-            return dbset.ToList();
+            await dbset.AddAsync(entity);
         }
 
-        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        public async void AddRangeAsync(IEnumerable<TEntity> entities)
         {
-            return dbset.SingleOrDefault(predicate);
-        }
-
-        public void Add(TEntity entity)
-        {
-            dbset.Add(entity);
-        }
-
-        public void AddRange(IEnumerable<TEntity> entities)
-        {
-            dbset.AddRange(entities);
+            await dbset.AddRangeAsync(entities);
         }
 
         public void Remove(TEntity entity)
         {
-            dbset.Remove(entity);
+            dbset.Remove(entity)
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
