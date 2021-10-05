@@ -18,6 +18,12 @@ namespace Domain.Entities.Bidding
         public DateTime Date { get; set; }
         public string Comments { get; set; }
 
+        // Abaixo para lógica de posse, participantes e concordâncias.
+        public long ContractOwner { get; set; }
+        public ICollection<long> Participants { get; set; }
+        public ICollection<long> Agreements { get; set; }
+        public bool Closed { get; set; }
+
         public virtual ICollection<Clause> Clauses { get; set; }
         public virtual ICollection<Additive> Additives { get; set; }
         public virtual ICollection<Spreadsheet> Spreadsheets { get; set; }
