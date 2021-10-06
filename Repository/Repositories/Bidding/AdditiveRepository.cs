@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Repositories
+namespace Repository.Repositories.Bidding
 {
     public class AdditiveRepository : Repository<Additive>, IAdditiveRepository
     {

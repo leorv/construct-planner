@@ -8,15 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Repositories
+namespace Repository.Repositories.Bidding.PriceReference
 {
-    public class SourceRepository : Repository<Source>, ISourceRepository
+    public class SourceItemRepository : Repository<SourceItem>, ISourceItemRepository
     {
         public ConstructContext ConstructContext
         {
             get { return Context as ConstructContext; }
         }
-        public SourceRepository(DbContext context) : base(context)
+        public SourceItemRepository(DbContext context) : base(context)
         {
         }
     }
