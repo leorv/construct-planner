@@ -1,4 +1,3 @@
-using Domain.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository.Context;
+using Repository.Interfaces;
 using Repository.Repositories;
 
 namespace Web
@@ -33,7 +33,7 @@ namespace Web
                 options.UseMySql(connectionString,
                     ServerVersion.AutoDetect(connectionString),
                     m => m.MigrationsAssembly("Repository")));
-
+            
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddDatabaseDeveloperPageExceptionFilter();

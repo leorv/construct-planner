@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces
+namespace Repository.Interfaces
 {
     // TODO: implementar IDisposable no IRepository?? Macoratti deixou sem.
     public interface IRepository<TEntity> /*: IDisposable*/ where TEntity : class

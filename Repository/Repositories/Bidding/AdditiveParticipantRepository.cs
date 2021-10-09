@@ -2,6 +2,7 @@
 using Domain.Interfaces.Bidding;
 using Microsoft.EntityFrameworkCore;
 using Repository.Context;
+using Repository.Interfaces.Bidding;
 using System;
 using System.Collections.Generic;
 using System.Linq;

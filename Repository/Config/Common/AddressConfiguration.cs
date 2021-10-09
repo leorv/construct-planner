@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Config.Bidding.Common
+namespace Repository.Config.Common
 {
     public class AddressConfiguration : IEntityTypeConfiguration<Address>
     {

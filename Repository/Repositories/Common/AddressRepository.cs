@@ -1,11 +1,6 @@
 ﻿using Domain.Entities.Common;
-using Domain.Interfaces.Common;
 using Repository.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Repository.Interfaces.Common;
 
 namespace Repository.Repositories.Common
 {

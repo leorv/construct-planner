@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Interfaces.Bidding;
-using Domain.Interfaces.Bidding.PriceReference;
-using Domain.Interfaces.Common;
+using Repository.Interfaces.Bidding;
+using Repository.Interfaces.Bidding.PriceReference;
+using Repository.Interfaces.Common;
 
-namespace Domain.Interfaces
+namespace Repository.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
         // Bidding
         IAdditiveAgreementRepository AdditiveAgreementRepository { get; }
-        IAdditiveParticipantRepository AdditiveParticipantRepository {  get; }
+        IAdditiveParticipantRepository AdditiveParticipantRepository { get; }
         IAdditiveRepository AdditiveRepository { get; }
-        IClauseAgreementRepository ClauseAgreementRepository {  get; }
+        IClauseAgreementRepository ClauseAgreementRepository { get; }
         IClauseRepository ClauseRepository { get; }
-        IContractAgreementRepository ContractAgreementRepository {  get; }
+        IContractAgreementRepository ContractAgreementRepository { get; }
         IContractParticipantRepository ContractParticipantRepository { get; }
         IContractRepository ContractRepository { get; }
         ILevelRepository LevelRepository { get; }

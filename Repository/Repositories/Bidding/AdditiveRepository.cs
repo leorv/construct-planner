@@ -1,11 +1,6 @@
 ﻿using Domain.Entities.Bidding;
-using Domain.Interfaces.Bidding;
 using Repository.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Repository.Interfaces.Bidding;
 
 namespace Repository.Repositories.Bidding
 {

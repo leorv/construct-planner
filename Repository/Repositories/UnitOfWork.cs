@@ -1,16 +1,13 @@
-﻿using Domain.Interfaces.Bidding;
-using Domain.Interfaces;
+﻿using Repository.Interfaces.Bidding;
 using Repository.Context;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Repository.Repositories.Bidding;
 using Repository.Repositories.Bidding.PriceReference;
-using Domain.Interfaces.Common;
+using Repository.Interfaces.Common;
 using Repository.Repositories.Common;
-using Domain.Interfaces.Bidding.PriceReference;
+using Repository.Interfaces.Bidding.PriceReference;
+using Repository.Interfaces;
 
 namespace Repository.Repositories
 {

@@ -4,11 +4,7 @@ using Domain.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Repository.Config.Bidding;
 using Repository.Config.Bidding.PriceReference;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Repository.Config.Common;
 
 namespace Repository.Context
 {
@@ -53,6 +49,8 @@ namespace Repository.Context
             modelBuilder.ApplyConfiguration(new InputConfiguration());
             modelBuilder.ApplyConfiguration(new SourceConfiguration());
             modelBuilder.ApplyConfiguration(new SourceItemConfiguration());
+            // Common
+            modelBuilder.ApplyConfiguration(new AddressConfiguration());
 
 
 

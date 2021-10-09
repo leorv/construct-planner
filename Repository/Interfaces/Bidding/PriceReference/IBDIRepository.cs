@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.Bidding.PriceReference
+namespace Repository.Interfaces.Bidding.PriceReference
 {
     public interface IBDIRepository : IRepository<BDI>
     {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.Bidding
+namespace Repository.Interfaces.Bidding
 {
-    public interface IContractAgreementRepository : IRepository<ContractAgreement>
+    public interface IClauseRepository : IRepository<Clause>
     {
     }
 }
