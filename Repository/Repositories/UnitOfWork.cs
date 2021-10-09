@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Repository.Repositories.Bidding;
 using Repository.Repositories.Bidding.PriceReference;
+using Domain.Interfaces.Common;
+using Repository.Repositories.Common;
+using Domain.Interfaces.Bidding.PriceReference;
 
 namespace Repository.Repositories
 {
@@ -15,22 +18,36 @@ namespace Repository.Repositories
     {
         private readonly ConstructContext context;
 
+        // Bidding
+        private IAdditiveAgreementRepository additiveAgreementRepository = null;
+        public IAdditiveAgreementRepository AdditiveAgreementRepository
+        {
+            get
+            {
+                if (additiveAgreementRepository == null)
+                {
+                    additiveAgreementRepository = new AdditiveAgreementsRepository(context);
+                }
+                return additiveAgreementRepository;
+            }
+        }
+        private IAdditiveParticipantRepository additiveParticipantRepository = null;
+        public IAdditiveParticipantRepository AdditiveParticipantRepository
+        {
+            get
+            {
+                if (additiveParticipantRepository == null)
+                {
+                    additiveParticipantRepository = new AdditiveParticipantRepository(context);
+                }
+               return additiveParticipantRepository;
+            }
+        }
         private IAdditiveRepository additiveRepository = null;
-        private IBDIRepository bdiRepository = null;
-        private IClauseRepository clauseRepository = null;
-        private IContractRepository contractRepository = null;
-        private IInputRepository inputRepository = null;
-        private ILevelRepository levelRepository = null;
-        private ISourceItemRepository sourceItemRepository = null;
-        private ISourceRepository sourceRepository = null;
-        private ISpreadsheetItemRepository spreadsheetItemRepository = null;
-        private ISpreadsheetRepository spreadsheetRepository = null;
-
-
-        public IAdditiveRepository AdditiveRepository 
-        { 
-            get 
-            { 
+        public IAdditiveRepository AdditiveRepository
+        {
+            get
+            {
                 if (additiveRepository == null)
                 {
                     additiveRepository = new AdditiveRepository(context);
@@ -38,17 +55,19 @@ namespace Repository.Repositories
                 return additiveRepository;
             }
         }
-        public IBDIRepository BDIRepository
+        private IClauseAgreementRepository clauseAgreementRepository = null;
+        public IClauseAgreementRepository ClauseAgreementRepository
         {
             get
             {
-                if (bdiRepository == null)
+                if (clauseAgreementRepository == null)
                 {
-                    bdiRepository = new BDIRepository(context);
+                    clauseAgreementRepository = new ClauseAgreementRepository(context);
                 }
-                return bdiRepository;
+                return clauseAgreementRepository;
             }
         }
+        private IClauseRepository clauseRepository = null;
         public IClauseRepository ClauseRepository
         {
             get
@@ -60,6 +79,31 @@ namespace Repository.Repositories
                 return clauseRepository;
             }
         }
+        private IContractAgreementRepository contractAgreementRepository = null;
+        public IContractAgreementRepository ContractAgreementRepository
+        {
+            get
+            {
+                if (contractAgreementRepository == null)
+                {
+                    contractAgreementRepository = new ContractAgreementRepository(context);
+                }
+                return contractAgreementRepository;
+            }
+        }
+        private IContractParticipantRepository contractParticipantRepository = null;
+        public IContractParticipantRepository ContractParticipantRepository
+        {
+            get
+            {
+                if (contractParticipantRepository == null)
+                {
+                    contractParticipantRepository = new ContractParticipantRepository(context);
+                }
+                return contractParticipantRepository;
+            }
+        }
+        private IContractRepository contractRepository = null;
         public IContractRepository ContractRepository
         {
             get
@@ -71,17 +115,7 @@ namespace Repository.Repositories
                 return contractRepository;
             }
         }
-        public IInputRepository InputRepository
-        {
-            get
-            {
-                if(inputRepository == null)
-                {
-                    inputRepository = new InputRepository(context);
-                }
-                return inputRepository;
-            }
-        }
+        private ILevelRepository levelRepository = null;
         public ILevelRepository LevelRepository
         {
             get
@@ -93,6 +127,56 @@ namespace Repository.Repositories
                 return levelRepository;
             }
         }
+        private ISpreadsheetItemRepository spreadsheetItemRepository = null;
+        public ISpreadsheetItemRepository SpreadsheetItemRepository
+        {
+            get
+            {
+                if (spreadsheetItemRepository == null)
+                {
+                    spreadsheetItemRepository = new SpreadsheetItemRepository(context);
+                }
+                return spreadsheetItemRepository;
+            }
+        }
+        private ISpreadsheetRepository spreadsheetRepository = null;
+        public ISpreadsheetRepository SpreadsheetRepository
+        {
+            get
+            {
+                if (spreadsheetRepository == null)
+                {
+                    spreadsheetRepository = new SpreadsheetRepository(context);
+                }
+                return spreadsheetRepository;
+            }
+        }
+        // PriceReference
+        private IBDIRepository bdiRepository = null;
+        public IBDIRepository BDIRepository
+        {
+            get
+            {
+                if (bdiRepository == null)
+                {
+                    bdiRepository = new BDIRepository(context);
+                }
+                return bdiRepository;
+            }
+        }
+        private IInputRepository inputRepository = null;
+        public IInputRepository InputRepository
+        {
+            get
+            {
+                if (inputRepository == null)
+                {
+                    inputRepository = new InputRepository(context);
+                }
+                return inputRepository;
+            }
+        }
+        private ISourceItemRepository sourceItemRepository = null;
         public ISourceItemRepository SourceItemRepository
         {
             get
@@ -105,6 +189,7 @@ namespace Repository.Repositories
 
             }
         }
+        private ISourceRepository sourceRepository = null;
         public ISourceRepository SourceRepository
         {
             get
@@ -116,44 +201,24 @@ namespace Repository.Repositories
                 return sourceRepository;
             }
         }
-        public ISpreadsheetItemRepository SpreadsheetItemRepository
+        //Common
+        private IAddressRepository addressRepository = null;
+        public IAddressRepository AddressRepository
         {
             get
             {
-                if (spreadsheetItemRepository == null)
+                if (addressRepository == null)
                 {
-                    spreadsheetItemRepository = new SpreadsheetItemRepository(context);
+                    addressRepository = new AddressRepository(context);
                 }
-                return spreadsheetItemRepository;
+                return addressRepository;
             }
         }
-        public ISpreadsheetRepository SpreadsheetRepository
-        {
-            get
-            {
-                if (spreadsheetRepository == null)
-                {
-                    spreadsheetRepository = new SpreadsheetRepository(context);
-                }
-                return spreadsheetRepository;
-            }
-        }
+
 
         public UnitOfWork(ConstructContext context)
         {
             this.context = context;
-
-            // Acho que o que tem aqui abaixo não está legal, mas bora assim...
-            //AdditiveRepository = new AdditiveRepository(context);
-            //BDIRepository = new BDIRepository(context);
-            //ClauseRepository = new ClauseRepository(context);
-            //ContractRepository = new ContractRepository(context);
-            //InputRepository = new InputRepository(context);
-            //LevelRepository = new LevelRepository(context);
-            //SourceItemRepository = new SourceItemRepository(context);
-            //SourceRepository = new SourceRepository(context);
-            //SpreadsheetItemRepository = new SpreadsheetItemRepository(context);
-            //SpreadsheetRepository = new SpreadsheetRepository(context);
         }
 
         public void Dispose()

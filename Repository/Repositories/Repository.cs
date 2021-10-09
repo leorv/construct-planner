@@ -55,7 +55,7 @@ namespace Repository.Repositories
 
         public void Remove(TEntity entity)
         {
-            dbset.Remove(entity)
+            dbset.Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)

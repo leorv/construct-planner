@@ -17,11 +17,12 @@ namespace Domain.Entities.Bidding
         public string Description {  get; set; } // Que fica em cima, apresentando o doc.
         public string Justification { get; set; }
         public decimal TotalValue { get; set; }
+        
+        public long UserId { get; set; }
+        public virtual User User { get; set; }
 
-        // Abaixo para lógica de posse, participantes e concordâncias.
-        public long AdditiveOwner { get; set; }
-        public ICollection<long> Participants { get; set; }
-        public ICollection<long> Agreements { get; set; }
+        public virtual ICollection<AdditiveParticipant> Participants { get; set; }
+        public virtual ICollection<AdditiveAgreement> Agreements { get; set; }
         public bool Closed { get; set; }
 
         // Relações

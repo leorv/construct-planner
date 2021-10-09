@@ -12,7 +12,7 @@ namespace Domain.Entities.Bidding
         public string Number { get; set; }
         public string Text { get; set; }
 
-        public ICollection<long> Agreements { get; set; }
+        public ICollection<ClauseAgreement> Agreements { get; set; }
         public bool Closed { get; set; }
 
         public long ContractId { get; set; }

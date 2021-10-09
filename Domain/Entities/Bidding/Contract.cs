@@ -18,10 +18,12 @@ namespace Domain.Entities.Bidding
         public DateTime Date { get; set; }
         public string Comments { get; set; }
 
-        // Abaixo para lógica de posse, participantes e concordâncias.
-        public long ContractOwner { get; set; }
-        public ICollection<long> Participants { get; set; }
-        public ICollection<long> Agreements { get; set; }
+        // Dono/Criador do contrato.
+        public long UserId { get; set; }
+        public virtual User User { get; set; }
+        // Participantes do contrato e os assentimentos.
+        public ICollection<ContractParticipant> Participants { get; set; }
+        public ICollection<ContractAgreement> Agreements { get; set; }
         public bool Closed { get; set; }
 
         public virtual ICollection<Clause> Clauses { get; set; }

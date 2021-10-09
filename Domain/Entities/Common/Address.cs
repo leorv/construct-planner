@@ -9,6 +9,7 @@ namespace Domain.Entities.Common
 {
     public class Address
     {
+        // TODO: Implementar o Address no contexto, repositório e unit of work.
         public int Id {  get; set; }
         public string PostalCode { get; set; }
         public string Street { get; set; }
