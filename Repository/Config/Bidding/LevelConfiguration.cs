@@ -13,7 +13,23 @@ namespace Repository.Config.Bidding
     {
         public void Configure(EntityTypeBuilder<Level> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Level");
+
+            builder.HasKey(l => l.LevelId);
+
+            builder.Property(l => l.LevelId)
+                .HasColumnType("bigint");
+            builder.Property(l => l.Name)
+                .IsRequired();
+            builder.Property(l => l.SpreadsheetId)
+                .HasColumnType("bigint");
+
+            builder.HasOne(s => s.Spreadsheet)
+                .WithMany(l => l.Levels)
+                .HasForeignKey(s => s.SpreadsheetId);
+
+            builder.HasMany(si => si.SpreadsheetItems)
+                .WithOne(l => l.Level);
         }
     }
 }

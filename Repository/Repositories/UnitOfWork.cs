@@ -28,18 +28,18 @@ namespace Repository.Repositories
                 return additiveAgreementRepository;
             }
         }
-        private IAdditiveParticipantRepository additiveParticipantRepository = null;
-        public IAdditiveParticipantRepository AdditiveParticipantRepository
-        {
-            get
-            {
-                if (additiveParticipantRepository == null)
-                {
-                    additiveParticipantRepository = new AdditiveParticipantRepository(context);
-                }
-               return additiveParticipantRepository;
-            }
-        }
+        //private IAdditiveParticipantRepository additiveParticipantRepository = null;
+        //public IAdditiveParticipantRepository AdditiveParticipantRepository
+        //{
+        //    get
+        //    {
+        //        if (additiveParticipantRepository == null)
+        //        {
+        //            additiveParticipantRepository = new AdditiveParticipantRepository(context);
+        //        }
+        //       return additiveParticipantRepository;
+        //    }
+        //}
         private IAdditiveRepository additiveRepository = null;
         public IAdditiveRepository AdditiveRepository
         {
@@ -52,18 +52,18 @@ namespace Repository.Repositories
                 return additiveRepository;
             }
         }
-        private IClauseAgreementRepository clauseAgreementRepository = null;
-        public IClauseAgreementRepository ClauseAgreementRepository
-        {
-            get
-            {
-                if (clauseAgreementRepository == null)
-                {
-                    clauseAgreementRepository = new ClauseAgreementRepository(context);
-                }
-                return clauseAgreementRepository;
-            }
-        }
+        //private IClauseAgreementRepository clauseAgreementRepository = null;
+        //public IClauseAgreementRepository ClauseAgreementRepository
+        //{
+        //    get
+        //    {
+        //        if (clauseAgreementRepository == null)
+        //        {
+        //            clauseAgreementRepository = new ClauseAgreementRepository(context);
+        //        }
+        //        return clauseAgreementRepository;
+        //    }
+        //}
         private IClauseRepository clauseRepository = null;
         public IClauseRepository ClauseRepository
         {
@@ -88,16 +88,16 @@ namespace Repository.Repositories
                 return contractAgreementRepository;
             }
         }
-        private IContractParticipantRepository contractParticipantRepository = null;
-        public IContractParticipantRepository ContractParticipantRepository
+        private IContractUserRepository contractUserRepository = null;
+        public IContractUserRepository ContractUserRepository
         {
             get
             {
-                if (contractParticipantRepository == null)
+                if (contractUserRepository == null)
                 {
-                    contractParticipantRepository = new ContractParticipantRepository(context);
+                    contractUserRepository = new ContractUserRepository(context);
                 }
-                return contractParticipantRepository;
+                return contractUserRepository;
             }
         }
         private IContractRepository contractRepository = null;

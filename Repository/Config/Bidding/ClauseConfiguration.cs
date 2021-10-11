@@ -13,7 +13,17 @@ namespace Repository.Config.Bidding
     {
         public void Configure(EntityTypeBuilder<Clause> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Clause");
+
+            builder.HasKey(c => c.ClauseId);
+
+            builder.HasOne(c => c.Contract)
+                .WithMany(c => c.Clauses)
+                .HasForeignKey(c => c.ContractId);
+
+            builder.HasOne(a => a.Additive)
+                .WithMany(c => c.Clauses)
+                .HasForeignKey(a => a.AdditiveID);
         }
     }
 }

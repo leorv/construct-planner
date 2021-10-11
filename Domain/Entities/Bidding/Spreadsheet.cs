@@ -9,19 +9,20 @@ namespace Domain.Entities.Bidding
 {
     public class Spreadsheet
     {
-        public long Id { get; set; }
+        public long SpreadsheetId { get; set; }
         public string Name {  get; set; }
         public string Title {  get; set; }
         public string Description { get; set; }
         public string Author { get; set; }
         public DateTime Date { get; set; }
-        // Relações
+        public string EncumberType { get; set; }
+        
         public long ContractId { get; set; }
-        public Contract Contract { get; set; }
+        public virtual Contract Contract { get; set; }
         public long AdditiveId { get; set; }
-        public Additive Additive { get; set; }
-        public ICollection<Address> Addresses { get; set; }
-        public ICollection<Level> Levels { get; set; }
+        public virtual Additive Additive { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Level> Levels { get; set; }
 
     }
 }

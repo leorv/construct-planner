@@ -8,16 +8,16 @@ namespace Domain.Entities.Bidding.PriceReference
 {
     public class Source
     {
-        public long Id { get; set; }
+        public long SourceId { get; set; }
         public string Name { get; set; }
         public int Day { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
         public string SourceFamily { get; set; }
-        public string EncumberType { get; set; }
+        public string EncumberType { get; set; }  // SD = Sem desoneração ; CD = Com desoneração.
         // Relações
-        public ICollection<Input> Inputs { get; set; }
-        public ICollection<SourceItem> SourceItems { get; set; }
+        public virtual ICollection<Input> Inputs { get; set; }
+        public virtual ICollection<SourceItem> SourceItems { get; set; }
 
 
     }

@@ -13,7 +13,35 @@ namespace Repository.Config.Bidding
     {
         public void Configure(EntityTypeBuilder<SpreadsheetItem> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("SpreadsheetItem");
+
+            builder.HasKey(si => si.SpreadsheetItemId);
+
+            builder.Property(si => si.SpreadsheetItemId)
+                .HasColumnType("bigint");
+
+            builder.Property(si => si.Source)
+                .HasColumnType("varchar")
+                .HasMaxLength(48);
+            builder.Property(si => si.Code)
+                .HasColumnType("varchar")
+                .HasMaxLength(32);
+            builder.Property(si => si.Description)
+                .HasColumnType("varchar")
+                .HasMaxLength(256);
+            builder.Property(si => si.Amount)
+                .HasColumnType("double");
+            builder.Property(si => si.Unit)
+                .HasColumnType("varchar")
+                .HasMaxLength(8);
+            builder.Property(si => si.ManPower)
+                .HasColumnType("decimal");
+            builder.Property(si => si.Material)
+                .HasColumnType("decimal");
+
+            builder.HasOne(l => l.Level)
+                .WithMany(si => si.SpreadsheetItems)
+                .HasForeignKey(si => si.LevelId);
         }
     }
 }

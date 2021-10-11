@@ -13,7 +13,35 @@ namespace Repository.Config.Bidding.PriceReference
     {
         public void Configure(EntityTypeBuilder<Source> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Source");
+
+            builder.HasKey(s => s.SourceId);
+
+            builder.Property(s => s.SourceId)
+                .HasColumnType("bigint");
+            builder.Property(s => s.Name)
+                .HasColumnType("varchar")
+                .HasMaxLength(48);
+            builder.Property(s => s.Day)
+                .HasColumnType("int")
+                .HasMaxLength(2);
+            builder.Property(s => s.Month)
+                .HasColumnType("int")
+                .HasMaxLength(2);
+            builder.Property(s => s.Year)
+                .HasColumnType("int")
+                .HasMaxLength(4);
+            builder.Property(s => s.SourceFamily)
+                .HasColumnType("varchar")
+                .HasMaxLength(64);
+            builder.Property(s => s.EncumberType)
+                .HasColumnType("char")
+                .HasMaxLength(2);
+
+            builder.HasMany(si => si.SourceItems)
+                .WithOne(s => s.Source);
+            builder.HasMany(i => i.Inputs)
+                .WithOne(s => s.Source);
         }
     }
 }

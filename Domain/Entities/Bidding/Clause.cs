@@ -8,16 +8,15 @@ namespace Domain.Entities.Bidding
 {
     public class Clause
     {
-        public long Id { get; set; }
+        public long ClauseId { get; set; }
         public string Number { get; set; }
         public string Text { get; set; }
 
-        public ICollection<ClauseAgreement> Agreements { get; set; }
         public bool Closed { get; set; }
 
         public long ContractId { get; set; }
-        public Contract Contract {  get; set; }
+        public virtual Contract Contract {  get; set; }
         public long AdditiveID { get; set; }
-        public Additive Additive { get; set; }
+        public virtual Additive Additive { get; set; }
     }
 }

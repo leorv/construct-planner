@@ -8,7 +8,7 @@ namespace Domain.Entities.Bidding.PriceReference
 {
     public class BDI
     {
-        public long Id { get; set; }
+        public long BDIId { get; set; }
         public int Number { get; set; }
         public string Name {  get; set; }
         // Administração Central:
@@ -29,6 +29,9 @@ namespace Domain.Entities.Bidding.PriceReference
         public double CPRB { get; set; } // Contribuição Previdenciária sobre Receita Bruta
         public double ISS { get; set; } // Ou ISSQN.
         public double BDIValue { get; set; }
+
+        public long ContractId { get; set; }
+        public virtual Contract Contract { get; set; }
 
     }
 }

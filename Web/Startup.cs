@@ -30,7 +30,8 @@ namespace Web
             string connectionString = Configuration.GetConnectionString("MySqlConnection");
 
             services.AddDbContext<ConstructContext>(options =>
-                options.UseMySql(connectionString,
+                options.UseLazyLoadingProxies()
+                    .UseMySql(connectionString,
                     ServerVersion.AutoDetect(connectionString),
                     m => m.MigrationsAssembly("Repository")));
             

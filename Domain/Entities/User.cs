@@ -9,7 +9,7 @@ namespace Domain.Entities
 {
     public class User
     {
-        public long Id { get; set; }
+        public long UserId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -18,10 +18,10 @@ namespace Domain.Entities
 
         public virtual ICollection<Contract> Contracts { get; set; }
         public virtual ICollection<Additive> Additives { get; set; }
-
-        public virtual ICollection<ContractAgreement> Agreements { get; set; }
-        public virtual ICollection<ContractParticipant> Participants {  get; set; }
-
+        public virtual ICollection<AdditiveAgreement> AdditiveAgreements { get; set; }
+        // public virtual ICollection<AdditiveUser> AdditiveUsers { get; set; }
+        public virtual ICollection<ContractAgreement> ContractAgreements { get; set; }
+        public virtual ICollection<ContractUser> ContractUsers { get; set; }
 
     }
 }

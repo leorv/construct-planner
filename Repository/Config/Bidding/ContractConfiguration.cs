@@ -13,7 +13,49 @@ namespace Repository.Config.Bidding
     {
         public void Configure(EntityTypeBuilder<Contract> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Contract");
+
+            builder.HasKey(c => c.ContractId);
+
+            builder.Property(c => c.ContractId)
+                .HasColumnType("BIGINT");
+            builder.Property(c => c.Name)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(256)
+                .IsRequired();
+            builder.Property(c => c.Number)
+                .HasColumnType("int")
+                .IsRequired();
+            builder.Property(c => c.Object)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(256)
+                .IsRequired();
+            builder.Property(c => c.TotalValue)
+                .HasColumnType("decimal");
+            builder.Property(c => c.Date)
+                .HasColumnType("datetime");
+
+            builder.HasOne(u => u.User)
+                .WithMany(c => c.Contracts)
+                .HasForeignKey(u => u.UserId);
+
+            builder.HasMany(us => us.ContractUsers)
+                .WithOne(c => c.Contract);
+
+            builder.HasMany(ca => ca.ContractAgreements)
+                .WithOne(c => c.Contract);
+
+            builder.HasMany(cl => cl.Clauses)
+                .WithOne(c => c.Contract);
+
+            builder.HasMany(a => a.Additives)
+                .WithOne(c => c.Contract);
+
+            builder.HasMany(s => s.Spreadsheets)
+                .WithOne(c => c.Contract);
+
+            builder.HasMany(b => b.BDIs)
+                .WithOne(c => c.Contract);
         }
     }
 }

@@ -10,26 +10,25 @@ namespace Domain.Entities.Bidding
 {
     public class Additive
     {
-        public long Id {  get; set; }
+        public long AdditiveId {  get; set; }
         public string Name {  get; set; }
         public int Number { get; set; }
         public int Year { get; set; }
         public string Description {  get; set; } // Que fica em cima, apresentando o doc.
         public string Justification { get; set; }
         public decimal TotalValue { get; set; }
-        
-        public long UserId { get; set; }
-        public virtual User User { get; set; }
-
-        public virtual ICollection<AdditiveParticipant> Participants { get; set; }
-        public virtual ICollection<AdditiveAgreement> Agreements { get; set; }
+        public DateTime Date { get; set; }
         public bool Closed { get; set; }
 
-        // Relações
+        public long UserId { get; set; }
+        public virtual User User { get; set; }
         public long ContractId { get; set; }
         public virtual Contract Contract { get; set; }
         public virtual ICollection<Clause> Clauses {  get; set; }
+        public long SpreadsheetId { get; set; }
         public virtual Spreadsheet Spreadsheet {  get; set; }
+        //public virtual ICollection<AdditiveUser> AdditiveUsers { get; set; }
+        public virtual ICollection<AdditiveAgreement> AdditiveAgreements { get; set; }
 
     }
 

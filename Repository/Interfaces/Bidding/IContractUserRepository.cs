@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Interfaces.Bidding
 {
-    public interface IContractParticipantRepository : IRepository<ContractParticipant>
+    public interface IContractUserRepository : IRepository<ContractUser>
     {
     }
 }

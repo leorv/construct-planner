@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Bidding
 {
-    public class ContractParticipant
+    public class ContractUser
     {
-        public long ParticipantId { get; set; }
-        public virtual User Participant { get; set; }
+        public long UserId { get; set; }
+        public virtual User User { get; set; }
         public long ContractId { get; set; }
         public virtual Contract Contract { get; set; }
 

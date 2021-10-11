@@ -12,12 +12,12 @@ namespace Repository.Context
     {
         // Bidding
         public DbSet<AdditiveAgreement> AdditiveAgreements { get; set; }
-        public DbSet<AdditiveParticipant> AdditiveParticipants { get; set; }
+        //public DbSet<AdditiveUser> AdditiveParticipants { get; set; }
         public DbSet<Additive> Additives { get; set; }
-        public DbSet<ClauseAgreement> ClauseAgreements { get; set; }
+        //public DbSet<ClauseAgreement> ClauseAgreements { get; set; }
         public DbSet<Clause> Clauses { get; set; }
         public DbSet<ContractAgreement> ContractAgreements { get; set; }
-        public DbSet<ContractParticipant> ContractParticipants { get; set; }
+        public DbSet<ContractUser> ContractUsers { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Level> Levels { get; set; }
         public DbSet<SpreadsheetItem> SpreadsheetItems { get; set; }
@@ -38,8 +38,10 @@ namespace Repository.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Bidding
+            modelBuilder.ApplyConfiguration(new AdditiveAgreementConfiguration());
             modelBuilder.ApplyConfiguration(new AdditiveConfiguration());
             modelBuilder.ApplyConfiguration(new ClauseConfiguration());
+            modelBuilder.ApplyConfiguration(new ContractAgreementConfiguration());
             modelBuilder.ApplyConfiguration(new ContractConfiguration());
             modelBuilder.ApplyConfiguration(new LevelConfiguration());
             modelBuilder.ApplyConfiguration(new SpreadsheetConfiguration());
@@ -51,9 +53,6 @@ namespace Repository.Context
             modelBuilder.ApplyConfiguration(new SourceItemConfiguration());
             // Common
             modelBuilder.ApplyConfiguration(new AddressConfiguration());
-
-
-
 
             base.OnModelCreating(modelBuilder);
         }

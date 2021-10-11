@@ -8,7 +8,7 @@ namespace Domain.Entities.Bidding.PriceReference
 {
     public class SourceItem
     {
-        public long Id { get; set; }
+        public long SourceItemId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string Unit { get; set; }
@@ -17,7 +17,7 @@ namespace Domain.Entities.Bidding.PriceReference
         public decimal TotalUnitValue {  get; set; }
         // Relações
         public long SourceId { get; set; }
-        public Source Source { get; set; }
-        public ICollection<Input> Inputs { get; set; }
+        public virtual Source Source { get; set; }
+        public virtual ICollection<Input> Inputs { get; set; }
     }
 }

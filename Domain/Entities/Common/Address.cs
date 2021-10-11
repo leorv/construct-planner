@@ -10,7 +10,7 @@ namespace Domain.Entities.Common
     public class Address
     {
         // TODO: Implementar o Address no contexto, repositório e unit of work.
-        public int Id {  get; set; }
+        public int AddressId {  get; set; }
         public string PostalCode { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
@@ -21,6 +21,6 @@ namespace Domain.Entities.Common
         public string Country {  get; set; }
         // Relações
         public long SpreadsheetId { get; set; }
-        public Spreadsheet Spreadsheet {  get; set; }
+        public virtual Spreadsheet Spreadsheet {  get; set; }
     }
 }

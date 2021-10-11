@@ -8,11 +8,12 @@ namespace Domain.Entities.Bidding
 {
     public class Level
     {
-        public long Id { get; set; }
+        public long LevelId { get; set; }
         public string Name { get; set; }
-        // Relações
+
         public long SpreadsheetId { get; set; }
-        public ICollection<SpreadsheetItem> SpreadsheetItems { get; set; }
+        public virtual Spreadsheet Spreadsheet { get; set; }
+        public virtual ICollection<SpreadsheetItem> SpreadsheetItems { get; set; }
 
     }
 }

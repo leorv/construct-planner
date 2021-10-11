@@ -13,7 +13,7 @@ namespace Repository.Interfaces
     {
         // Bidding
         IAdditiveAgreementRepository AdditiveAgreementRepository { get; }
-        IAdditiveParticipantRepository AdditiveParticipantRepository { get; }
+        //IAdditiveParticipantRepository AdditiveParticipantRepository { get; }
         IAdditiveRepository AdditiveRepository { get; }
         IClauseAgreementRepository ClauseAgreementRepository { get; }
         IClauseRepository ClauseRepository { get; }

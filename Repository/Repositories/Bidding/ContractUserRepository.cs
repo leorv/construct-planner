@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Repository.Context;
 using Repository.Interfaces.Bidding;
 
-namespace Repository.Repositories.Bidding.PriceReference
+namespace Repository.Repositories.Bidding
 {
-    public class ContractParticipantRepository : Repository<ContractParticipant>, IContractParticipantRepository
+    public class ContractUserRepository : Repository<ContractUser>, IContractUserRepository
     {
         public ConstructContext ConstructContext
         {
@@ -14,7 +14,7 @@ namespace Repository.Repositories.Bidding.PriceReference
                 return Context as ConstructContext;
             }
         }
-        public ContractParticipantRepository(DbContext context) : base(context)
+        public ContractUserRepository(DbContext context) : base(context)
         {
 
         }
