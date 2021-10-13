@@ -23,17 +23,30 @@ namespace Repository.Config.Bidding
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(256)
                 .IsRequired();
-            builder.Property(c => c.Number)
-                .HasColumnType("int")
-                .IsRequired();
             builder.Property(c => c.Object)
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(256)
                 .IsRequired();
+            builder.Property(c => c.Object)
+                .HasColumnType("varchar")
+                .HasMaxLength(512);
+            builder.Property(c => c.Number)
+                .HasColumnType("int")
+                .IsRequired();
+            builder.Property(c => c.Year)
+                .HasColumnType("int")
+                .HasMaxLength(4)
+                .IsRequired();
+            builder.Property(c => c.Description)
+                .HasColumnType("varchar")
+                .HasMaxLength(512);            
             builder.Property(c => c.TotalValue)
                 .HasColumnType("decimal");
             builder.Property(c => c.Date)
                 .HasColumnType("datetime");
+            builder.Property(c => c.Closed)
+                .HasColumnType("TINYINT")
+                .HasMaxLength(1);
 
             builder.HasOne(u => u.User)
                 .WithMany(c => c.Contracts)

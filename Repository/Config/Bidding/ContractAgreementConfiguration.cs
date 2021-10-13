@@ -20,7 +20,8 @@ namespace Repository.Config.Bidding
             builder.Property(ca => ca.ContractId)
                 .HasColumnType("bigint");
             builder.Property(ca => ca.IsAgree)
-                .HasColumnType("bool");
+                .HasColumnType("TINYINT")
+                .HasMaxLength(1);
 
             builder.HasOne(u => u.User)
                 .WithMany(ca => ca.ContractAgreements)

@@ -43,6 +43,7 @@ namespace Repository.Context
             modelBuilder.ApplyConfiguration(new ClauseConfiguration());
             modelBuilder.ApplyConfiguration(new ContractAgreementConfiguration());
             modelBuilder.ApplyConfiguration(new ContractConfiguration());
+            modelBuilder.ApplyConfiguration(new ContractUserConfiguration());
             modelBuilder.ApplyConfiguration(new LevelConfiguration());
             modelBuilder.ApplyConfiguration(new SpreadsheetConfiguration());
             modelBuilder.ApplyConfiguration(new SpreadsheetItemConfiguration());

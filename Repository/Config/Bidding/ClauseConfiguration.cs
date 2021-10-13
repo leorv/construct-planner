@@ -17,6 +17,15 @@ namespace Repository.Config.Bidding
 
             builder.HasKey(c => c.ClauseId);
 
+            builder.Property(c => c.ClauseId)
+                .HasColumnType("bigint");
+            builder.Property(c => c.Number)
+                .HasColumnType("varchar")
+                .HasMaxLength(10);
+            builder.Property(c => c.Text)
+                .HasColumnType("varchar")
+                .HasMaxLength(2048);
+
             builder.HasOne(c => c.Contract)
                 .WithMany(c => c.Clauses)
                 .HasForeignKey(c => c.ContractId);

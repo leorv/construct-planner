@@ -17,6 +17,9 @@ namespace Repository.Config.Bidding
             builder.ToTable("AdditiveAgreement");
 
             builder.HasKey(aa => new { aa.UserId, aa.AdditiveId });
+            builder.Property(aa => aa.IsAgree)
+                .HasColumnType("TINYINT")
+                .HasMaxLength(1);
 
             builder.HasOne(u => u.User)
                 .WithMany(aa => aa.AdditiveAgreements)

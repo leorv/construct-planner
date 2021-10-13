@@ -19,7 +19,7 @@ namespace Web
         public Startup() // IConfiguration configuration
         {
             var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("config.json", optional: false, reloadOnChange: true);
+            builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
         }
@@ -34,7 +34,7 @@ namespace Web
                     .UseMySql(connectionString,
                     ServerVersion.AutoDetect(connectionString),
                     m => m.MigrationsAssembly("Repository")));
-            
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddDatabaseDeveloperPageExceptionFilter();

@@ -33,7 +33,7 @@ namespace Repository.Config.Bidding
                 .HasMaxLength(1024);
             builder.Property(s => s.Author)
                 .HasColumnType("varchar")
-                .HasMaxLength(256);
+                .HasMaxLength(128);
             builder.Property(s => s.Date)
                 .HasColumnType("datetime");
             builder.Property(s => s.EncumberType)
@@ -44,8 +44,7 @@ namespace Repository.Config.Bidding
                 .WithMany(s => s.Spreadsheets)
                 .HasForeignKey(s => s.ContractId);
 
-            builder.HasOne(a => a.Additive)
-               .WithOne(s => s.Spreadsheet);
+            builder.HasOne(a => a.Additive);
 
             builder.HasMany(a => a.Addresses)
                 .WithOne(s => s.Spreadsheet);

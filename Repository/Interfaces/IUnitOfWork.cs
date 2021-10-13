@@ -15,10 +15,9 @@ namespace Repository.Interfaces
         IAdditiveAgreementRepository AdditiveAgreementRepository { get; }
         //IAdditiveParticipantRepository AdditiveParticipantRepository { get; }
         IAdditiveRepository AdditiveRepository { get; }
-        IClauseAgreementRepository ClauseAgreementRepository { get; }
         IClauseRepository ClauseRepository { get; }
         IContractAgreementRepository ContractAgreementRepository { get; }
-        IContractParticipantRepository ContractParticipantRepository { get; }
+        IContractUserRepository ContractUserRepository { get; }
         IContractRepository ContractRepository { get; }
         ILevelRepository LevelRepository { get; }
         ISpreadsheetItemRepository SpreadsheetItemRepository { get; }

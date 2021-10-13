@@ -30,9 +30,11 @@ namespace Repository.Config
                 .HasColumnType("varchar")
                 .HasMaxLength(256);
             builder.Property(s => s.Password)
-                .HasColumnType("varchar");
+                .HasColumnType("varchar")
+                .HasMaxLength(1024);
             builder.Property(s => s.Photo)
-                .HasColumnType("varchar");
+                .HasColumnType("varchar")
+                .HasMaxLength(512);
 
             builder.HasMany(c => c.Contracts)
                 .WithOne(u => u.User)

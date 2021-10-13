@@ -17,6 +17,9 @@ namespace Repository.Config.Bidding.PriceReference
 
             builder.Property(b => b.BDIId)
                 .HasColumnType("bigint");
+            builder.Property(b => b.Number)
+                .HasColumnType("int")
+                .HasMaxLength(3);
             builder.Property(b => b.Name)
                 .HasColumnType("varchar")
                 .HasMaxLength(50)

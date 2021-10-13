@@ -20,9 +20,9 @@ namespace Repository.Config.Bidding
             builder.Property(l => l.LevelId)
                 .HasColumnType("bigint");
             builder.Property(l => l.Name)
+                .HasColumnType("varchar")
+                .HasMaxLength(64)
                 .IsRequired();
-            builder.Property(l => l.SpreadsheetId)
-                .HasColumnType("bigint");
 
             builder.HasOne(s => s.Spreadsheet)
                 .WithMany(l => l.Levels)
