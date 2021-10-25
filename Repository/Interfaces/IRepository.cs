@@ -11,10 +11,13 @@ namespace Repository.Interfaces
     public interface IRepository<TEntity> /*: IDisposable*/ where TEntity : class
     {
         Task<TEntity> GetAsync(long? id);
+        TEntity Get(long? id);
         Task<IEnumerable<TEntity>> GetAllAsync();
+        IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
+        TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate);
 
         void AddAsync(TEntity entity);
         void AddRangeAsync(IEnumerable<TEntity> entities);

@@ -25,9 +25,18 @@ namespace Repository.Repositories
             return await dbset.FindAsync(id);
         }
 
+        public TEntity Get(long? id)
+        {
+            return dbset.Find(id);
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await dbset.ToListAsync();
+        }
+        public IEnumerable<TEntity> GetAll()
+        {
+            return dbset.ToList();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
@@ -41,6 +50,11 @@ namespace Repository.Repositories
         public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await dbset.SingleOrDefaultAsync(predicate);
+        }
+
+        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return dbset.SingleOrDefault(predicate);
         }
 
         public async void AddAsync(TEntity entity)

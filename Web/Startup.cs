@@ -11,6 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Repository.Context;
 using Microsoft.EntityFrameworkCore;
+using Repository.Repositories;
+using Repository.Interfaces;
 
 namespace Web
 {
@@ -42,6 +44,8 @@ namespace Web
 
             services.AddControllersWithViews();
             // services.AddRazorPages();
+
+            services.AddTransient<IUnitOfWork,UnitOfWork>();
 
             // Em produção, os arquivos Angular vão ser servidos por este diretório:
             services.AddSpaStaticFiles(configuration =>
