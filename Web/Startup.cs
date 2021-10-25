@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Repository.Context;
-using Repository.Interfaces;
-using Repository.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web
 {
@@ -16,31 +18,32 @@ namespace Web
     {
         public IConfiguration Configuration { get; }
 
-        public Startup() // IConfiguration configuration
+        public Startup(IConfiguration configuration)
         {
             var builder = new ConfigurationBuilder();
             builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
         }
+                
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             string connectionString = Configuration.GetConnectionString("MySqlConnection");
 
             services.AddDbContext<ConstructContext>(options =>
-                options.UseLazyLoadingProxies()
-                    .UseMySql(connectionString,
+                options.UseMySql(connectionString,
                     ServerVersion.AutoDetect(connectionString),
                     m => m.MigrationsAssembly("Repository")));
-
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllersWithViews();
-            // In production, the Angular files will be served from this directory
+            // services.AddRazorPages();
+
+            // Em produção, os arquivos Angular vão ser servidos por este diretório:
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -69,6 +72,8 @@ namespace Web
             }
 
             app.UseRouting();
+
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
