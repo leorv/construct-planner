@@ -223,9 +223,13 @@ namespace Repository.Repositories
             context.Dispose();
         }
 
-        public async Task<bool> SaveAsync()
+        public async Task<bool> SaveChangesAsync()
         {
             return await context.SaveChangesAsync() > 0;
+        }
+        public bool SaveChanges()
+        {
+            return context.SaveChanges() > 0;
         }
     }
 }

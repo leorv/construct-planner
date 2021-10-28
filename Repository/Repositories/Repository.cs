@@ -57,9 +57,19 @@ namespace Repository.Repositories
             return dbset.SingleOrDefault(predicate);
         }
 
+        public void Add(TEntity entity)
+        {
+            dbset.Add(entity);
+        }
+
         public async void AddAsync(TEntity entity)
         {
             await dbset.AddAsync(entity);
+        }
+
+        public void AddRange(IEnumerable<TEntity> entities)
+        {
+            dbset.AddRange(entities);
         }
 
         public async void AddRangeAsync(IEnumerable<TEntity> entities)

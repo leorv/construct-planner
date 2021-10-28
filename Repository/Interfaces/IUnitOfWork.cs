@@ -35,6 +35,7 @@ namespace Repository.Interfaces
 
         // Macoratti ensina com o int Commit();
         // Método para salvar as informações.
-        Task<bool> SaveAsync();
+        Task<bool> SaveChangesAsync();
+        bool SaveChanges();
     }
 }

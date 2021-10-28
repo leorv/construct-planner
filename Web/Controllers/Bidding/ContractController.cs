@@ -26,7 +26,7 @@ namespace Web.Controllers.Bidding
         {
             try
             {
-                return Ok(unitOfWork.ContractRepository.GetAllAsync());
+                return Ok(unitOfWork.ContractRepository.GetAll());
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace Web.Controllers.Bidding
         {
             try
             {
-                return Ok(unitOfWork.ContractRepository.GetAsync(id));
+                return Ok(unitOfWork.ContractRepository.Get(id));
             }
             catch (Exception ex)
             {
@@ -54,12 +54,12 @@ namespace Web.Controllers.Bidding
         {
             try
             {
-                unitOfWork.ContractRepository.AddAsync(contract);
-                return Created("api/[controller]", contract);
+                unitOfWork.ContractRepository.Add(contract);
+                return Created("api/[controller]", contract); // 201
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message); // 404
             }
         }
 
@@ -82,12 +82,12 @@ namespace Web.Controllers.Bidding
                 // que é feita nas entidades. Isto é, se o usuário que está
                 // fazendo as alterações tem a permissão pra isso.
                 // ========================================================
-                long _auxId = unitOfWork.ContractRepository
-                    .SingleOrDefault(c => c.UserId == contract.UserId).UserId;
-                if (!(contract.UserId == _auxId))
-                {
-                    return BadRequest($"O usuário não possui permissão para realizar alterações.");
-                }
+                //long _auxId = unitOfWork.ContractRepository
+                //    .SingleOrDefault(c => c.UserId == contract.UserId).UserId;
+                //if (!(contract.UserId == _auxId))
+                //{
+                //    return BadRequest($"O usuário não possui permissão para realizar alterações.");
+                //}
                 // ========================================================
 
                 unitOfWork.ContractRepository.Update(contract);

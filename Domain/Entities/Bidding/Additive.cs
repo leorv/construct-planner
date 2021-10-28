@@ -20,9 +20,9 @@ namespace Domain.Entities.Bidding
         public DateTime Date { get; set; }
         public bool Closed { get; set; }
 
-        public long UserId { get; set; }
+        public long UserId { get; set; } // FK
         public virtual User User { get; set; }
-        public long ContractId { get; set; }
+        public long ContractId { get; set; } // FK
         public virtual Contract Contract { get; set; }
         public virtual ICollection<Clause> Clauses {  get; set; }
         //public long SpreadsheetId { get; set; }

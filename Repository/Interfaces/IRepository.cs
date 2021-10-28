@@ -19,7 +19,9 @@ namespace Repository.Interfaces
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate);
 
+        void Add(TEntity entity);
         void AddAsync(TEntity entity);
+        void AddRange(IEnumerable<TEntity> entities);
         void AddRangeAsync(IEnumerable<TEntity> entities);
 
         void Remove(TEntity entity);
