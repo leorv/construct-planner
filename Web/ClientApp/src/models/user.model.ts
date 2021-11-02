@@ -1,4 +1,6 @@
+import { Additive } from "./bidding/additive.model";
 import { Contract } from "./bidding/contract.model";
+import { ContractAgreement } from "./bidding/contractagreement.model";
 
 export class User {
   constructor(

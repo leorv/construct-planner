@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/user/login/login.component'
 import { ContractComponent } from './components/bidding/contract/contract.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContractComponent
+    LoginComponent,
+    ContractComponent,
   ],
   imports: [
     BrowserModule,

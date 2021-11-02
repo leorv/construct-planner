@@ -1,3 +1,4 @@
+import { AdditiveAgreement } from "./additiveagreement.model";
 import { Clause } from "./clause.model";
 
 export class Additive {

@@ -9,10 +9,10 @@ export class Contract {
     public number: number,
     public year: number,
     public description: string,
-    public totalvalue: number,
+    public totalValue: number,
     public date: Date,
     public closed: boolean,
-    public userid: number,
+    public userId: number,
     public users: User[] = [],
   )
   {
