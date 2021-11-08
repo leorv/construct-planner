@@ -11,11 +11,14 @@ namespace Web.Controllers
     public class UserController : ControllerBase
     {
         [HttpPost]
-        public ActionResult Post(){
-            try {
+        public ActionResult Post()
+        {
+            try 
+            {
                 return Ok();
             }
-            catch(Exception ex){
+            catch(Exception ex)
+            {
                 return BadRequest(ex.Message);
             }
         }
@@ -32,7 +35,7 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    return BadRequest();
+                    return BadRequest("Usuário ou senha inválido.");
                 }               
             }
             catch (Exception ex)
