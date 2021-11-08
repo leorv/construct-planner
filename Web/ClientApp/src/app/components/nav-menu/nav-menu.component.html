@@ -25,22 +25,40 @@
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }"
             >
-              <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+              <a class="nav-link text-dark" [routerLink]="['/']"
+              >Home</a>
             </li>
             <li class="nav-item" [routerLinkActive]="['link-active']">
-              <a class="nav-link text-dark" [routerLink]="['/counter']"
-                >Counter</a
+              <a class="nav-link text-dark" [routerLink]="['/contracts']"
+                >Contratos</a
               >
             </li>
             <li class="nav-item" [routerLinkActive]="['link-active']">
-              <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-                >Fetch data</a
+              <a class="nav-link text-dark" [routerLink]="['/']"
+                >Medições</a
               >
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/']"
+                >Pagamentos</a
+              >
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/']"
+                >Gráficos</a
+              >
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!loggedUser()">
+              <a class="nav-link text-dark" [routerLink]="['/login']"
+                >Login</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="loggedUser()">
+              <a class="nav-link text-dark" [routerLink]="[' ']" (click)="logout()"
+                >Sair</a>
             </li>
           </ul>
-          <app-login-menu></app-login-menu>
+         <!-- <app-login-menu></app-login-menu> -->
         </div>
       </div>
     </nav>
   </header>
-  
