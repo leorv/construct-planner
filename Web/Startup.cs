@@ -46,8 +46,10 @@ namespace Web
             // services.AddRazorPages();
 
             services.AddTransient<IUnitOfWork,UnitOfWork>();
+            // Caso nÃ£o usÃ¡ssemos a unit of work, terÃ­amos que implementar
+            // AddScooped para todas as nossas interfaces.
 
-            // Em produção, os arquivos Angular vão ser servidos por este diretório:
+            // Em produï¿½ï¿½o, os arquivos Angular vï¿½o ser servidos por este diretï¿½rio:
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -96,6 +98,12 @@ namespace Web
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
+
+                    /* === outra maneira de iniciar ===
+                    *
+                    * spa.UseProxyToSpaDevelopmentServer("http://localhost:4200/");
+                    *
+                    */
                 }
             });
         }

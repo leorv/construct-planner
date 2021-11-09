@@ -15,7 +15,9 @@ export class UserService {
         let user_json = sessionStorage.getItem("AuthenticatedUser");
         if (user_json != null){
             this._user = JSON.parse(user_json);
+            return this._user;
         }
+        alert("Não foi possível obter informações do usuário.");
         return this._user;
     }    
     set user(user: User){

@@ -211,6 +211,19 @@ namespace Repository.Repositories
                 return addressRepository;
             }
         }
+        // USer
+        private IUserRepository userRepository = null;
+        public IUserRepository UserRepository
+        {
+            get
+            {
+                if (userRepository == null)
+                {
+                    userRepository = new UserRepository(context);
+                }
+                return userRepository;
+            }
+        }
 
 
         public UnitOfWork(ConstructContext context)

@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -10,14 +11,20 @@ namespace Web.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUnitOfWork unitOfWork;
+
+        public UserController(IUnitOfWork unitOfWork){
+            this.unitOfWork = unitOfWork;
+        }
+
         [HttpPost]
         public ActionResult Post()
         {
-            try 
+            try
             {
                 return Ok();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -29,6 +36,9 @@ namespace Web.Controllers
         {
             try
             {
+                // var returnedUser = unitOfWork
+
+
                 if (user.Email == "leo@teste.com" && user.Password == "1234")
                 {
                     return Ok(user);
@@ -36,12 +46,12 @@ namespace Web.Controllers
                 else
                 {
                     return BadRequest("Usuário ou senha inválido.");
-                }               
+                }
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-        }        
+        }
     }
 }

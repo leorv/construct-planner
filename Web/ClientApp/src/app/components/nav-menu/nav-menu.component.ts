@@ -26,7 +26,6 @@ export class NavMenuComponent {
     }
 
     public loggedUser(): boolean {
-        // return sessionStorage.getItem("AuthenticatedUser") == "1";
         return this.userService.authenticatedUser();
     }
 

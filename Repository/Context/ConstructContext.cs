@@ -1,10 +1,12 @@
 ﻿using Domain.Entities.Bidding;
 using Domain.Entities.Bidding.PriceReference;
 using Domain.Entities.Common;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository.Config.Bidding;
 using Repository.Config.Bidding.PriceReference;
 using Repository.Config.Common;
+using Repository.Config;
 
 namespace Repository.Context
 {
@@ -29,6 +31,8 @@ namespace Repository.Context
         public DbSet<Source> Sources { get; set; }
         // Common
         public DbSet<Address> Addresses { get; set; }
+        // User
+        public DbSet<User> Users { get; set; }
 
 
         public ConstructContext(DbContextOptions options) : base(options)
@@ -54,6 +58,8 @@ namespace Repository.Context
             modelBuilder.ApplyConfiguration(new SourceItemConfiguration());
             // Common
             modelBuilder.ApplyConfiguration(new AddressConfiguration());
+            // User
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
