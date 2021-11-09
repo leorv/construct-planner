@@ -71,16 +71,15 @@
                     </div>
                     <!-- FIM DO CHECK BOX DE LEMBRAR SENHA E LINK PARA ESQUECI MINHA SENHA -->
 
-                    <div class="alert alert-danger" *ngIf="message">
-                        {{ message }}
-                    </div>
-
                     <!-- BOTÃO SUBMIT -->
                     <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center mb-3" (click)="toEnter()">Entrar</button> </div>
                     <!-- FIM DO BOTÃO SUBMIT -->
                     <!-- NÃO POSSUI UMA CONTA -->
                     <div class="row mb-4 px-3"> <small class="font-weight-bold">Não possui uma conta? <a class="text-danger">Registrar</a> </small> </div>
                     <!-- FIM DO NÃO POSSUI UMA CONTA -->
+                    <div class="alert alert-danger" *ngIf="message">
+                        {{ message }}
+                    </div>
                 </div>
             </div>
             <!-- fim do login -->

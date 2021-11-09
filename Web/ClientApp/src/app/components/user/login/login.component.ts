@@ -36,16 +36,17 @@ export class LoginComponent implements OnInit {
 
     toEnter() {
         this.userService.UserVerify(this.user).subscribe(
-            data => {
-                // console.log(data);
-                var returnedUser: User;
-                returnedUser = data;
-                sessionStorage.setItem("AuthenticatedUser", "1");
-                sessionStorage.setItem("UserEmail", returnedUser.email);
-
+            user_json => {
+                // retorno sem erros;
+                // var returnedUser: User;
+                // returnedUser = data;
+                // 
+                // sessionStorage.setItem("UserEmail", returnedUser.email);
                 // Somente para ver o que está retornando, depois excluir
-                // TODO: exluir a mensagem abaixo.
-                alert(this.returnUrl);
+                // ...
+                // alert(this.returnUrl);
+
+                this.userService.user = user_json;
 
                 if (this.returnUrl == null) {
                     this.router.navigate(['/']);
