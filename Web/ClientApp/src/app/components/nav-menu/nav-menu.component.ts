@@ -2,37 +2,37 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+    selector: 'app-nav-menu',
+    templateUrl: './nav-menu.component.html',
+    styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
+    isExpanded = false;
 
-  /**
-   *
-   */
-  constructor(
-    private router: Router
-  ) {   
+    /**
+     *
+     */
+    constructor(
+        private router: Router
+    ) {
 
-  }
+    }
 
-  collapse() {
-    this.isExpanded = false;
-  }
+    collapse() {
+        this.isExpanded = false;
+    }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
-  }
+    toggle() {
+        this.isExpanded = !this.isExpanded;
+    }
 
-  public loggedUser(): boolean {
-    return sessionStorage.getItem("loggedUser") == "1";
-  }
+    public loggedUser(): boolean {
+        return sessionStorage.getItem("AuthenticatedUser") == "1";
+    }
 
-  logout(): void {
-    sessionStorage.setItem("loggedUser", "");
-    this.router.navigate(['/']);  
-  }
+    logout(): void {
+        sessionStorage.setItem("AuthenticatedUser", "");
+        this.router.navigate(['/']);
+    }
 
 }

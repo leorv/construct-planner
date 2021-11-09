@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
@@ -5,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RouteGuard } from './authorization/route.guard';
 import { LoginComponent } from './components/user/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -29,6 +31,7 @@ import { UserService } from './services/user/user.service';
   ],
   providers: [
     UserService,
+    RouteGuard,
     { provide: 'BASE_URL', useFactory: getBaseUrl }
   ],
   bootstrap: [AppComponent]

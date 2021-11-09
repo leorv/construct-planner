@@ -23,7 +23,7 @@ namespace Web.Controllers
             }
         }
 
-        // POST api/<UserController>/userVerify
+        // POST api/<UserController>/UserVerify
         [HttpPost("UserVerify")]
         public ActionResult UserVerify([FromBody] User user)
         {
