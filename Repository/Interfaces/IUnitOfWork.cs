@@ -29,6 +29,8 @@ namespace Repository.Interfaces
         ISourceRepository SourceRepository { get; }
         // Common
         IAddressRepository AddressRepository { get; }
+        // User
+        IUserRepository UserRepository { get; }
 
 
 

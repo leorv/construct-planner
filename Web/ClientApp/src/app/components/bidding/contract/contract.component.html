@@ -1,1 +1,12 @@
-<h1>Componente de contrato</h1>
+<h1>Contratos</h1>
+
+<div *ngFor="let contract of contracts">
+    <div class="card" style="width: 18rem;">
+        <img src="" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ contract.number }} - {{ contract.year }}</h5>
+            <p class="card-text">{{ contract.object }}</p>
+            <a class="btn btn-primary" (click)="contractDetails()" >Detalhes</a>
+        </div>
+    </div>
+</div>

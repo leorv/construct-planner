@@ -16,25 +16,29 @@ export class LoginComponent implements OnInit {
     public user: User;
     public returnUrl: string | undefined;
     public message: string | undefined;
+    public spinnerActive: boolean;
 
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private userService: UserService
+        private userService: UserService,
     ) {
         this.user = new User(
             0, "", "", "", "", ""
         );
+        this.spinnerActive = false;
     }
 
     ngOnInit(): void {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.        
         this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
+        this.spinnerActive = false;
 
     }
 
     toEnter() {
+        this.spinnerActive = true;
         this.userService.UserVerify(this.user).subscribe(
             user_json => {
                 // retorno sem erros;
@@ -60,5 +64,6 @@ export class LoginComponent implements OnInit {
                 this.message = err.error;
             }
         );
+        this.spinnerActive = false;
     }
 }

@@ -36,17 +36,16 @@ namespace Web.Controllers
         {
             try
             {
-                // var returnedUser = unitOfWork
+                // var returnedUser = unitOfWork.UserRepository.Get(user.UserId);
+                var returnedUser = unitOfWork.UserRepository.SingleOrDefault(u => u.Email == user.Email);
 
-
-                if (user.Email == "leo@teste.com" && user.Password == "1234")
-                {
-                    return Ok(user);
+                if ( returnedUser == null ){
+                    return BadRequest("Usuário não encontrado. Verifique as informações.");                    
                 }
-                else
-                {
-                    return BadRequest("Usuário ou senha inválido.");
+                if ( user.Email == returnedUser.Email && user.Password == returnedUser.Password ){
+                    return Ok(returnedUser);
                 }
+                return BadRequest("Usuário ou senha inválido.");
             }
             catch (Exception ex)
             {

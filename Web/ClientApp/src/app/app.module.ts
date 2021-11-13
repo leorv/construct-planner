@@ -13,6 +13,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { ContractComponent } from './components/bidding/contract/contract.component';
 
 import { UserService } from './services/user/user.service';
+import { ContractDetailsComponent } from './bidding/contract/contract-details/contract-details.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { UserService } from './services/user/user.service';
     HomeComponent,
     NavMenuComponent,
     ContractComponent,
+    ContractDetailsComponent,
   ],
   imports: [
     BrowserModule,

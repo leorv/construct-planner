@@ -1,0 +1,9 @@
+# Faz o login do usuário
+POST http://localhost:5000/api/user/userverify
+Content-Type: application/json
+
+{
+    "email" : "leonardo_vendramini@hotmail.com",
+    "password" : "lionhard"
+}
+
