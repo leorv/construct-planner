@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 export class ContractService {
 
     private baseUrl: string;
+    private apiUrl: string = 'api/contract/';
+    private apiCall: string = '';
     private _contract!: Contract;
     
     constructor(
@@ -19,9 +21,14 @@ export class ContractService {
         this.baseUrl = baseUrl;
     }
 
-    public getContracts() {        
-        return this.http.get(this.baseUrl.concat('api/contract'));
-    }        
+    public getContracts() : Observable<Contract[]>{        
+        return this.http.get<Contract[]>(this.baseUrl.concat(this.apiUrl));
+    }
+
+    public getContractById(id: number) : Observable<Contract>{
+        return this.http.get<Contract>(this.baseUrl
+            .concat(this.apiUrl,id.toString()));
+    }
 
     public sessionClear() {
         // Implementar

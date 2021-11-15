@@ -17,6 +17,19 @@ namespace Web.Controllers
             this.unitOfWork = unitOfWork;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                return Ok(unitOfWork.UserRepository.Get(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public ActionResult Post()
         {

@@ -3,7 +3,7 @@ import { User } from "../user.model";
 export class Contract {
 
   constructor(
-    public contractId: Number,
+    public contractId: number,
     public name: string,
     public object: string,
     public number: number,

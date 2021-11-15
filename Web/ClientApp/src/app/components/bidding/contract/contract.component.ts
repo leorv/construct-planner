@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ContractService } from './../../../services/biddings/contract.service';
 import { Contract } from './../../../models/bidding/contract.model';
 import { Component, OnInit } from '@angular/core';
@@ -12,12 +13,15 @@ export class ContractComponent implements OnInit {
 
     title = 'Contratos';
     // public contracts: Contract[] = [];
-    public contracts: any;
+    
+    // private detailsUrl: string = '/contract-details/';
+    public contracts: Contract[] = [];
+    
 
     constructor(
-        private contractService: ContractService
-    ) {      
-
+        private router: Router,
+        private contractService: ContractService,        
+    ) {
     }
 
     ngOnInit(): void {
@@ -31,11 +35,9 @@ export class ContractComponent implements OnInit {
                 console.log(error);
             }
         )
-           
-
     }
 
-
-
-
+    contractDetails(id: number) {
+        this.router.navigate(['contract-details',id.toString()]);
+    }
 }

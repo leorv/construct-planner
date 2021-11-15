@@ -1,3 +1,5 @@
+import { ContractService } from './services/biddings/contract.service';
+import { ContractDetailsComponent } from './components/bidding/contract/contract-details/contract-details.component';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,36 +15,36 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { ContractComponent } from './components/bidding/contract/contract.component';
 
 import { UserService } from './services/user/user.service';
-import { ContractDetailsComponent } from './bidding/contract/contract-details/contract-details.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    NavMenuComponent,
-    ContractComponent,
-    ContractDetailsComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
-  providers: [
-    UserService,
-    RouteGuard,
-    { provide: 'BASE_URL', useFactory: getBaseUrl }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        HomeComponent,
+        NavMenuComponent,
+        ContractComponent,
+        ContractDetailsComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
+    providers: [
+        ContractService,
+        UserService,
+        RouteGuard,
+        { provide: 'BASE_URL', useFactory: getBaseUrl }
+    ],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {
-  
- }
- 
+
+}
+
 export function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href;
+    return document.getElementsByTagName('base')[0].href;
 }
