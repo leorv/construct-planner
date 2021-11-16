@@ -31,8 +31,13 @@ export class ContractComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.getAllContracts();        
+    }
+
+    getAllContracts(){
         this.contractService.getContracts().subscribe(
             (data) => {
+                console.log('Contratos recarregados.');
                 this.contracts = data;
                 // this.getContractsAndUsers(this.contracts);
                 // this.getContratedUsers(this.contracts);
@@ -42,6 +47,8 @@ export class ContractComponent implements OnInit {
             }
         )
     }
+
+
     // getContractsAndUsers(contracts: Contract[]) {
     //     for (var n = 0; n <= contracts.length; n++) {
     //         this.userService.getUserById(contracts[n].contractedUserId).subscribe(

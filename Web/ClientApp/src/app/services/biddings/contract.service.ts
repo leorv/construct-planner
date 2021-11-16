@@ -30,6 +30,7 @@ export class ContractService {
     }
     // POST: Create
     public createContract(contract: Contract): Observable<Contract> {
+        console.log('Inserindo contrato...');
         return this.http.post<Contract>(this.baseUrl.concat(this.apiUrl), contract);
     }
     // PUT: Update

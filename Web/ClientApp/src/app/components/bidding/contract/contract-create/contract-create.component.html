@@ -2,18 +2,63 @@
 
 <form>
     <div class="form-group">
-      <label for="name">Nome do contrato:</label>
-      <input type="text" class="form-control" [(ngModel)]="contract.name" id="name" aria-describedby="nameHelp" placeholder="Nome do contrato">
-      <small id="emailHelp" class="form-text text-muted">Se trata de um nome para identificação neste sistema, esta informação não será inserida em documentação oficial.</small>
+        <label for="name">Nome do contrato:</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="contract.name" id="name" aria-describedby="nameHelp"
+            placeholder="Nome do contrato">
+        <small id="emailHelp" class="form-text text-muted">Se trata de um nome para identificação neste sistema, esta
+            informação não será inserida em documentação oficial.</small>
     </div>
     <div class="form-group">
-      <label for="object">Object</label>
-      <input type="text" class="form-control" [(ngModel)]="contract.object" id="object" placeholder="Objeto do contrato">
+        <label for="object">Object</label>
+        <input type="text" class="form-control" name="object" [(ngModel)]="contract.object" id="object"
+            placeholder="Objeto do contrato">
     </div>
 
-    <!-- <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div> -->
-    <button type="submit" class="btn btn-primary">Criar contrato</button>
-  </form>
+    <div class="form-group">
+        <label for="number">Number</label>
+        <input type="number" class="form-control" name="number" [(ngModel)]="contract.number" id="number"
+            placeholder="Número do contrato">
+    </div>
+    <div class="form-group">
+        <label for="year">Ano</label>
+        <input type="number" class="form-control" name="year" [(ngModel)]="contract.year" id="year" placeholder="Ano do contrato">
+    </div>
+
+    <div class="form-group">
+        <label for="description">Descrição</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="contract.description" id="description"
+            placeholder="Descrição do contrato">
+    </div>
+
+    <div class="form-group">
+        <label for="date">Data de assinatura</label>
+        <input type="date" class="form-control" name="date" [(ngModel)]="contract.date" id="date">
+    </div>
+
+    <div>
+        <p>Lista de Ids dos possíveis contratados:</p>
+        <p *ngFor="let user of usersCanContracted"> {{ user.userId }} - {{ user.name }} </p>
+    </div>
+
+    <div class="form-group">
+        <label for="contractedUserId">Contratado</label> <small> - Digite apenas o número do Id.</small>
+        <input type="number" class="form-control" name="contractedUser" [(ngModel)]="contract.contractedUserId" id="contractedUserId"
+            placeholder="Selecione o usuário a ser contratado">
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="createContract()">Criar contrato</button>
+</form>
+
+
+<!-- public contractId: number = 0;
+  public name: string = '';
+  public object: string = '';
+  public number: number = 0;
+  public year: number = 0;
+  public description: string = '';
+  public totalValue: number = 0;
+  public date: Date = new Date();
+  public closed: boolean = false;
+  public contractedUserId: number = 0;
+  public userId: number = 0;
+  public users: User[] = []; -->

@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         this.userService.UserVerify(this.user).subscribe(
             user_json => {
                 this.userService.user = user_json;
+                // localStorage.setItem("authenticatedUser":user_json);
 
                 if (this.returnUrl == null) {
                     this.router.navigate(['/']);

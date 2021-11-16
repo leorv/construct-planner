@@ -13,9 +13,9 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     // TODO: Lembrar de colocar o canActivate nas rotas aqui...
 
-    { path: 'contracts', component: ContractComponent/*, canActivate: [RouteGuard]*/ },
-    { path: 'contract-create', component: ContractCreateComponent },
-    { path: 'contract-details/:id', component: ContractDetailsComponent }
+    { path: 'contracts', component: ContractComponent, canActivate: [RouteGuard] },
+    { path: 'contract-create', component: ContractCreateComponent, canActivate: [RouteGuard] },
+    { path: 'contract-details/:id', component: ContractDetailsComponent, canActivate: [RouteGuard] }
 ];
 
 @NgModule({

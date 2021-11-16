@@ -76,14 +76,15 @@
                     
 
                     <div class="row mb-3 px-3">
-                        <button type="submit" class="btn btn-blue text-center mb-3" (click)="toEnter()"
-                            *ngIf="!spinnerActive">
+                        <button type="submit" class="btn btn-blue btn-block text-center mb-3" (click)="toEnter()"
+                            [disabled]="spinnerActive">
+                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="spinnerActive"></span>
                             Entrar
                         </button>
-                        <button class="btn btn-blue text-center mb-3" type="button" disabled *ngIf="spinnerActive">
+                        <!-- <button class="btn btn-blue text-center mb-3" type="button" disabled *ngIf="spinnerActive">
                             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                             Carregando...
-                        </button>
+                        </button> -->
                     </div>
                     <!-- FIM DO BOTÃO SUBMIT -->
                     <!-- NÃO POSSUI UMA CONTA -->

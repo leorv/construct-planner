@@ -34,7 +34,6 @@ export class UserService {
 
     public sessionClear() {
         localStorage.setItem("AuthenticatedUser", "");
-        sessionStorage.setItem("AuthenticatedUser", "");
         this._user = new User();
     }
 
@@ -58,8 +57,17 @@ export class UserService {
     }
 
     public getUserById(id: number): Observable<User> {
-        const address = id.toString();
+        var address = id.toString();
         return this.http.get<User>(this.baseUrl.concat(this.addressService,address));
     }
+
+    public getAllUsers(): Observable<User[]> {
+        return this.http.get<User[]>(this.baseUrl.concat(this.addressService));
+    }
+
+    // GET: All
+    // public getContracts(): Observable<Contract[]> {
+    //     return this.http.get<Contract[]>(this.baseUrl.concat(this.apiUrl));
+    // }
 }
 

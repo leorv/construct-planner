@@ -30,6 +30,16 @@ namespace Web.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Get(){
+            try {
+                return Ok(unitOfWork.UserRepository.GetAll());
+            }
+            catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public ActionResult Post()
         {
