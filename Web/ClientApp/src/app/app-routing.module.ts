@@ -1,3 +1,4 @@
+import { ContractCreateComponent } from './components/bidding/contract/contract-create/contract-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,7 +11,10 @@ import { ContractDetailsComponent } from './components/bidding/contract/contract
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'contracts', component: ContractComponent, canActivate: [RouteGuard] },
+    // TODO: Lembrar de colocar o canActivate nas rotas aqui...
+
+    { path: 'contracts', component: ContractComponent/*, canActivate: [RouteGuard]*/ },
+    { path: 'contract-create', component: ContractCreateComponent },
     { path: 'contract-details/:id', component: ContractDetailsComponent }
 ];
 

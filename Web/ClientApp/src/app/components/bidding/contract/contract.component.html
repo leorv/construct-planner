@@ -1,11 +1,12 @@
 <h1>Contratos</h1>
-
+<hr>
+<button class="btn btn-primary" (click)="contractCreate()">Inserir novo contrato</button>
+<hr>
 <table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Objeto</th>
-            <th scope="col">Contratado</th>
             <th scope="col">Valor</th>
             <th scope="col"></th>
         </tr>
@@ -14,7 +15,6 @@
         <tr *ngFor="let contract of contracts">
             <td>{{ contract.number }}/{{ contract.year }}</td>
             <td>{{ contract.object }}</td>
-            <td>Otto</td>
             <td> {{ contract.totalValue }} </td>
             <td> <a class="btn btn-primary" (click)="contractDetails(contract.contractId)">Detalhes</a> </td>
         </tr>

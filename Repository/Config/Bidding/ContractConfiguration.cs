@@ -47,7 +47,8 @@ namespace Repository.Config.Bidding
             builder.Property(c => c.Closed)
                 .HasColumnType("TINYINT")
                 .HasMaxLength(1);
-
+            builder.Property(c => c.ContractedUserId)
+                .HasColumnType("BIGINT");
             builder.HasOne(u => u.User)
                 .WithMany(c => c.Contracts)
                 .HasForeignKey(u => u.UserId);

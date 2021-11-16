@@ -130,6 +130,9 @@ namespace Repository.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("TINYINT");
 
+                    b.Property<long>("ContractedUserId")
+                        .HasColumnType("BIGINT");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime");
 
@@ -542,19 +545,24 @@ namespace Repository.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Email")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(32)
+                        .HasColumnType("varchar(32)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(1024)
+                        .HasColumnType("varchar(1024)");
 
                     b.Property<string>("Photo")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
 
                     b.HasKey("UserId");
 

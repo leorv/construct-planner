@@ -13,8 +13,9 @@ import { Observable } from 'rxjs';
 })
 export class ContractDetailsComponent implements OnInit {
 
-    contract: Contract = new Contract(0, "", "", 0, 0, "", 0, new Date(), false, 0, []);
-    ownerUser: User = new User(0, '', '', '', '', '', [], [], []);
+    contract: Contract = new Contract();
+    ownerUser: User = new User();
+    contractedUser: User = new User();
 
     constructor(
         private contractService: ContractService,
@@ -28,24 +29,46 @@ export class ContractDetailsComponent implements OnInit {
         const par = this.route.snapshot.paramMap.get('id');
         console.log(par);
         if (par != null) {
-            this.contractService.getContractById(parseInt(par)).subscribe(
-                contract_json => {
-                    this.contract = contract_json;
-                    this.userService.getUserById(this.contract.userId).subscribe(
-                        user_json => {
-                            this.ownerUser = user_json;
-                        },
-                        err => {
-                            console.log(err.error);
-                        }
-                    );
-                },
-                err => {
-                    console.log(err.error);
-                }
-            );
-        }
-        
+            this.getContract(parseInt(par));            
+        }        
+    }
+    getContract(id: number){
+        console.log('contract id:');
+        console.log(id);
+        this.contractService.getContractById(id).subscribe(
+            contract_json => {
+                this.contract = contract_json;
+                this.getOwnerUser(this.contract.userId);
+                this.getContractedUser(this.contract.contractedUserId);
+            },
+            err => {
+                console.log(err.error);
+            }
+        );
+    }
+    getOwnerUser(id: number){
+        console.log('contract owner:');
+        console.log(id);
+        this.userService.getUserById(id).subscribe(
+            user_json => {
+                this.ownerUser = user_json;
+            },
+            err => {
+                console.log(err.error);
+            }
+        );
+    }
+    getContractedUser(id: number){
+        console.log('contracted User id:');
+        console.log(id);
+        this.userService.getUserById(id).subscribe(
+            user_json => {
+                this.contractedUser = user_json;
+            },
+            err => {
+                console.log(err.error);
+            }
+        );
     }
 
 

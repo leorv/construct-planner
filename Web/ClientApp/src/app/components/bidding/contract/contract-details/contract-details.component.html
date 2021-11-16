@@ -1,4 +1,15 @@
-<h1>Detalhes do contrato</h1>
-<hr>
-<h2>Tomador: {{ ownerUser.name }} </h2>
-<button class="btn btn-prymary">Planilhas</button>
+    <h1>Detalhes do contrato</h1>
+    <hr>
+    <h2>Tomador: {{ ownerUser.name }} </h2>
+    <h2>Contratado: {{ contractedUser.name }} </h2>
+    <div>
+        <button class="btn btn-prymary">Visualizar</button>
+        <button class="btn btn-prymary">Planilhas</button>
+        <button class="btn btn-prymary">Medições</button>
+        <button class="btn btn-prymary">Aditivos</button>
+    </div>
+    <div>
+        <router-outlet></router-outlet>        
+    </div>
+    
+

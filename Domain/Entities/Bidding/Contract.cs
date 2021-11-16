@@ -18,6 +18,7 @@ namespace Domain.Entities.Bidding
         public decimal TotalValue { get; set; }
         public DateTime Date { get; set; }
         public bool Closed { get; set; }
+        public long ContractedUserId { get; set; }
         // Relacionamentos
         public long UserId { get; set; }
         public virtual User User { get; set; }

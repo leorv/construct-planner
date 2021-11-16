@@ -1,8 +1,8 @@
 export class ContractUser {
-  constructor(
-    public userId: number,
-    public contractId: number,
-  ) {
 
-  }
+    constructor(
+        public userId: number,
+        public contractId: number
+    ) {
+    }
 }

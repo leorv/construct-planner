@@ -1,7 +1,7 @@
+import { User } from './../../models/user.model';
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs"
-import { User } from "src/app/models/user.model";
 
 @Injectable({
     providedIn: "root"
@@ -35,9 +35,7 @@ export class UserService {
     public sessionClear() {
         localStorage.setItem("AuthenticatedUser", "");
         sessionStorage.setItem("AuthenticatedUser", "");
-        this._user = new User(
-            0, "", "", "", "", ""
-        );
+        this._user = new User();
     }
 
     constructor(
