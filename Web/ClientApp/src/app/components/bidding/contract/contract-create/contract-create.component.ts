@@ -42,20 +42,27 @@ export class ContractCreateComponent implements OnInit {
         // if (localStorage.getItem("AuthenticatedUser").valueOf("userId") != null) {
         //     this.contract.userId = parseInt(localStorage.getItem("AuthenticatedUser").valueOf("userId"));
         // }
-        if (this.userService.user != null) {
+        if (this.userService.user == null) {
+            return alert("Falha na verificação do login. Verifique se o usuário está logado.");
+        }
+        else {
             this.contract.userId = this.userService.user.userId;
+
             console.log('inserimos o id para o contract.userId');
+            console.log(this.userService.user.userId);
+
+            this.contractService.createContract(this.contract).subscribe(
+                contract => {
+                    //this.contract = new Contract();
+                    console.log('Contrato inserido com sucesso.');
+                    this.router.navigate(['/contracts']);
+                },
+                err => {
+                    console.log('Ocorreu um erro ao cadastrar o contrato.', err);
+                }
+            )
+
         }
 
-        this.contractService.createContract(this.contract).subscribe(
-            contract => {
-                this.contract = new Contract();
-                console.log('Contrato inserido com sucesso.');
-                this.router.navigate(['/contracts']);
-            },
-            err => {
-                console.log('Ocorreu um erro ao cadastrar o contrato.', err);
-            }   
-        )
     }
 }

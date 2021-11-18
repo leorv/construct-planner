@@ -15,8 +15,36 @@
         <tr *ngFor="let contract of contracts">
             <td>{{ contract.number }}/{{ contract.year }}</td>
             <td>{{ contract.object }}</td>
-            <td> {{ contract.totalValue }} </td>
-            <td> <a class="btn btn-primary" (click)="contractDetails(contract.contractId)">Detalhes</a> </td>
+            <td> {{ contract.totalValue | currency: 'BRL'}} </td>
+            <td>
+                <a class="btn btn-primary" (click)="contractDetails(contract.contractId)">
+                    Detalhes
+                </a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletarModal">
+                    Deletar
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="deletarModal" tabindex="-1" aria-labelledby="deletarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletarModalLabel">Confirmação</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que quer excluir este contratos? Irá perder todos os dados referente a ele.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Deletar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -50,11 +50,14 @@ namespace Web.Controllers.Bidding
 
         // POST api/<ContractController>
         [HttpPost]
-        public IActionResult Post([FromBody] Contract contract)
+        public IActionResult Post([FromBody]
+        // [Bind("Name, Object, Number, Year, Description, Date, Closed, ContractedUserId, UserId")]
+        Contract contract)
         {
             try
             {
-                unitOfWork.ContractRepository.Add(contract);
+                unitOfWork.ContractRepository.Add(contract); 
+                unitOfWork.SaveChanges();
                 return Created("api/[controller]", contract); // 201
             }
             catch (Exception ex)
@@ -91,6 +94,8 @@ namespace Web.Controllers.Bidding
                 // ========================================================
 
                 unitOfWork.ContractRepository.Update(contract);
+                unitOfWork.SaveChanges();
+
                 return NoContent(); // 200
             }
             catch (Exception ex)
@@ -113,6 +118,7 @@ namespace Web.Controllers.Bidding
                 }
 
                 unitOfWork.ContractRepository.Remove(contract);
+                unitOfWork.SaveChanges();
 
                 return NoContent(); // 204
             }

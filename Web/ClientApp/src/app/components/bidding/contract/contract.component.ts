@@ -48,42 +48,18 @@ export class ContractComponent implements OnInit {
         )
     }
 
-
-    // getContractsAndUsers(contracts: Contract[]) {
-    //     for (var n = 0; n <= contracts.length; n++) {
-    //         this.userService.getUserById(contracts[n].contractedUserId).subscribe(
-    //             user => {
-    //                 this.contractUsers.push(new ContractUser(user.userId, contracts[n].contractId));
-    //             },
-    //             err => {
-    //                 console.log(err.error);
-    //             }
-    //         );
-    //     }
-    // }
-
-    // getContratedUsers(contracts: Contract[]) {
-    //     for (var n = 0; n <= contracts.length; n++) {
-    //         this.userService.getUserById(contracts[n].contractedUserId).subscribe(
-    //             user => {
-    //                 this.contratedUsers.push(user);
-    //             },
-    //             err => {
-    //                 console.log(err.error);
-    //             }
-    //         );
-    //     }
-    // }
-
-    // getUserName(user: User): string {
-    //     return user.name;
-    // }
-
-    contractDetails(id: number) {
-        this.router.navigate(['contract-details', id.toString()]);
-    }
+    // CRUD
     contractCreate() {
         this.router.navigate(['contract-create']);
     }
+    contractDetails(id: number) {
+        this.router.navigate(['contract-details', id.toString()]);
+    }
+    contractDelete(id: number){
+        this.contractService.removeContract(id);
+        this.router.navigate(['contracts']);
+    }
+    
+
 
 }
