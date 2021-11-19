@@ -53,6 +53,7 @@ namespace Web.Controllers.Bidding.PriceReference
             try
             {
                 unitOfWork.InputRepository.Add(input);
+                unitOfWork.SaveChanges();
                 return Created("api/[controller]", input); // 201
             }
             catch (Exception ex)
@@ -75,6 +76,7 @@ namespace Web.Controllers.Bidding.PriceReference
                 input.InputId = id;
 
                 unitOfWork.InputRepository.Update(input);
+                unitOfWork.SaveChanges();
                 return NoContent(); // 200
             }
             catch (Exception ex)
@@ -98,6 +100,7 @@ namespace Web.Controllers.Bidding.PriceReference
                 }
 
                 unitOfWork.InputRepository.Remove(input);
+                unitOfWork.SaveChanges();
 
                 return NoContent(); // 204
             }

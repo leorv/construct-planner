@@ -41,11 +41,13 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post([FromBody] User user)
         {
             try
             {
-                return Ok();
+                unitOfWork.UserRepository.Add(user); 
+                unitOfWork.SaveChanges();
+                return Created("api/[controller]", user); // 201
             }
             catch (Exception ex)
             {
@@ -74,6 +76,55 @@ namespace Web.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put([FromRoute] int id, [FromBody] User user)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    return BadRequest();
+                }
+
+                user.UserId = id;
+
+                unitOfWork.UserRepository.Update(user);
+                unitOfWork.SaveChanges();
+
+                return NoContent(); // 200
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // DELETE api/<UserController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                User user = unitOfWork.UserRepository.SingleOrDefault(c => c.UserId == id);
+
+                if (user == null)
+                {
+                    return BadRequest();
+                }
+
+                unitOfWork.UserRepository.Remove(user);
+                unitOfWork.SaveChanges();
+                Console.WriteLine("Usuário deletado.");
+
+                return NoContent(); // 204
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
     }
 }

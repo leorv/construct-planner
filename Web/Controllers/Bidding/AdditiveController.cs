@@ -56,6 +56,7 @@ namespace Web.Controllers.Bidding
             try
             {
                 unitOfWork.AdditiveRepository.Add(additive);
+                unitOfWork.SaveChanges();
                 return Created("api/[controller]", additive); // 201
             }
             catch (Exception ex)
@@ -78,6 +79,7 @@ namespace Web.Controllers.Bidding
                 additive.ContractId = id;
 
                 unitOfWork.AdditiveRepository.Update(additive);
+                unitOfWork.SaveChanges();
                 return NoContent(); // 200
             }
             catch (Exception ex)
@@ -100,6 +102,7 @@ namespace Web.Controllers.Bidding
                 }
 
                 unitOfWork.AdditiveRepository.Remove(additive);
+                unitOfWork.SaveChanges();
 
                 return NoContent(); // 204
             }

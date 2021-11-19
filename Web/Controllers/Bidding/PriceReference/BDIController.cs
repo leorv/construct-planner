@@ -53,6 +53,7 @@ namespace Web.Controllers.Bidding.PriceReference
             try
             {
                 unitOfWork.BDIRepository.Add(bdi);
+                unitOfWork.SaveChanges();
                 return Created("api/[controller]", bdi); // 201
             }
             catch (Exception ex)
@@ -75,6 +76,7 @@ namespace Web.Controllers.Bidding.PriceReference
                 bdi.BDIId = id;
 
                 unitOfWork.BDIRepository.Update(bdi);
+                unitOfWork.SaveChanges();
                 return NoContent(); // 200
             }
             catch (Exception ex)
@@ -98,6 +100,7 @@ namespace Web.Controllers.Bidding.PriceReference
                 }
 
                 unitOfWork.BDIRepository.Remove(bdi);
+                unitOfWork.SaveChanges();
 
                 return NoContent(); // 204
             }

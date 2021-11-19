@@ -53,6 +53,7 @@ namespace Web.Controllers.Bidding
             try
             {
                 unitOfWork.LevelRepository.Add(level);
+                unitOfWork.SaveChanges();
                 return Created("api/[controller]", level); // 201
             }
             catch (Exception ex)
@@ -75,6 +76,7 @@ namespace Web.Controllers.Bidding
                 level.LevelId = id;
 
                 unitOfWork.LevelRepository.Update(level);
+                unitOfWork.SaveChanges();
                 return NoContent(); // 200
             }
             catch (Exception ex)
@@ -97,6 +99,7 @@ namespace Web.Controllers.Bidding
                 }
 
                 unitOfWork.LevelRepository.Remove(level);
+                unitOfWork.SaveChanges();
 
                 return NoContent(); // 204
             }

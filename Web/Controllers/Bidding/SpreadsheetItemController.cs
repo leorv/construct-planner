@@ -53,6 +53,7 @@ namespace Web.Controllers.Bidding
             try
             {
                 unitOfWork.SpreadsheetItemRepository.Add(spreadsheetItem);
+                unitOfWork.SaveChanges();
                 return Created("api/[controller]", spreadsheetItem); // 201
             }
             catch (Exception ex)
@@ -75,6 +76,7 @@ namespace Web.Controllers.Bidding
                 spreadsheetItem.SpreadsheetItemId = id;
 
                 unitOfWork.SpreadsheetItemRepository.Update(spreadsheetItem);
+                unitOfWork.SaveChanges();
                 return NoContent(); // 200
             }
             catch (Exception ex)
@@ -98,6 +100,7 @@ namespace Web.Controllers.Bidding
                 }
 
                 unitOfWork.SpreadsheetItemRepository.Remove(spreadsheetItem);
+                unitOfWork.SaveChanges();
 
                 return NoContent(); // 204
             }

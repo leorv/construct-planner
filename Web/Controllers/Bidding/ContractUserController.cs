@@ -54,6 +54,7 @@ namespace Web.Controllers.Bidding
             try
             {
                 unitOfWork.ContractUserRepository.Add(contractUser);
+                unitOfWork.SaveChanges();
                 return Created("api/[controller]", contractUser); // 201
             }
             catch (Exception ex)
@@ -82,6 +83,7 @@ namespace Web.Controllers.Bidding
                 }
 
                 unitOfWork.ContractUserRepository.Update(contractUser);
+                unitOfWork.SaveChanges();
                 return NoContent(); // 200
             }
             catch (Exception ex)
@@ -110,6 +112,7 @@ namespace Web.Controllers.Bidding
                 }
 
                 unitOfWork.ContractUserRepository.Remove(contractUser);
+                unitOfWork.SaveChanges();
 
                 return NoContent(); // 204
             }
