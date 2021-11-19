@@ -1,3 +1,5 @@
+import { SpreadsheetComponent } from './components/bidding/spreadsheet/spreadsheet.component';
+import { ClauseComponent } from './components/bidding/clause/clause.component';
 import { ContractCreateComponent } from './components/bidding/contract/contract-create/contract-create.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,7 +17,15 @@ const routes: Routes = [
 
     { path: 'contracts', component: ContractComponent, canActivate: [RouteGuard] },
     { path: 'contract-create', component: ContractCreateComponent, canActivate: [RouteGuard] },
-    { path: 'contract-details/:id', component: ContractDetailsComponent, canActivate: [RouteGuard] }
+    { path: 'contract-details/:id', component: ContractDetailsComponent, canActivate: [RouteGuard],
+        children: [
+            {
+                path: 'clauses', component: ClauseComponent
+            },
+            {
+                path: 'spreadsheets', component: SpreadsheetComponent
+            } // TODO: implementar medições.
+        ] }
 ];
 
 @NgModule({

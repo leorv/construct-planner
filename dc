@@ -1,0 +1,173 @@
+[33mcommit b9dd111905f0e3049173b6392850bcef46159a13[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Thu Nov 18 20:28:56 2021 -0300
+
+    acerto do component ContractAgreement.
+
+[33mcommit 304da406fcfd9001cae0c76da1ce33a9fe381a79[m[33m ([m[1;31morigin/leonardo[m[33m, [m[1;32mleonardo[m[33m)[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Thu Nov 18 17:53:24 2021 -0300
+
+    Criação de todas as classes de serviço no Angular.
+
+[33mcommit 1015cf1639be42c579b471bc32df9e16e56449f6[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Nov 16 09:24:53 2021 -0300
+
+    implementando o create contract
+
+[33mcommit 80a89487d73ee230946cbba4a66e9a48d67adc6d[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Nov 16 03:59:25 2021 -0300
+
+    Criação de todos os componentes.
+
+[33mcommit 06a468caab11a06bacf791884e2b3bca39571ca0[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Mon Nov 15 11:32:37 2021 -0300
+
+    Implementação dos dados na página de detalhes do contrato, buscando o contrato e seu dono.
+
+[33mcommit 0ea2cdb67a39093be8bdcb3ed576c5e8928479ac[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sat Nov 13 01:17:59 2021 -0300
+
+    feito o componente do contrato com o get da api
+
+[33mcommit 08d1d3376344f3dd2aa61db5c88ce9002f742890[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Nov 9 08:33:48 2021 -0300
+
+    Criação da classe e interface para o repositório User, e também a inserção no contexto e unitOfWork.
+
+[33mcommit 4dbfa45d68bc0e20ea2e2d0a2c06dfdd179a1200[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Nov 9 02:48:31 2021 -0300
+
+    implementação do sessionStorage somente como responsabilidade do UserService.
+
+[33mcommit a1f83642f4f9e54d40f14360db2e7c4f213117a1[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Nov 9 01:25:31 2021 -0300
+
+    implementado o login, funcionando corretamente e retornando a url correta.
+
+[33mcommit 64c0c88877c1b28fdf8626be9660e14979810788[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sun Nov 7 23:03:32 2021 -0300
+
+    criação do API do usuário
+
+[33mcommit 7159662feb718afa8206bc242df9e6002c38a389[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sun Nov 7 21:28:15 2021 -0300
+
+    feita a tela de login com o angular, headers, body, usando o método post. Não foi feito teste na API do usuário.
+
+[33mcommit c10784a0806c7384b785bd90a5bfc127f217a62e[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Mon Nov 1 23:33:30 2021 -0300
+
+    Começo do projeto em angular, fazendo a tela de login.
+
+[33mcommit 65828dfd920db1ac47b324b20a26d10326eeb45f[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Thu Oct 28 22:46:27 2021 -0300
+
+    Finalizando os controllers.
+
+[33mcommit fccbe5cc697ba0aae6356a2f7da32a1a2009a0dd[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Thu Oct 28 20:39:01 2021 -0300
+
+    criando a API no webapp.
+
+[33mcommit 1ade7bea3d0f921738ef88d9ba504727124a130c[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Mon Oct 25 00:28:34 2021 -0300
+
+    Criação do Controller da classe Contract, para a API.
+
+[33mcommit 8e44ea4410d4f44f2736d8ec9f49f4ae3c46dc4d[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sun Oct 24 22:27:13 2021 -0300
+
+    Mudança para o Angular 12 e Bootstrap 5, novo app Angular e projeto Web limpo.
+
+[33mcommit d4612d783312c5a99beb85529975439628783efc[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Oct 12 23:54:32 2021 -0300
+
+    feita correções de erros no mapeamento das classes, feito primeiro migrations.
+
+[33mcommit 16d4c7c33462066893e76b5343521dd3005f0629[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Mon Oct 11 18:49:56 2021 -0300
+
+    feito todas as configurações de mapeamento das classes, pronto para primeiro migrations.
+
+[33mcommit 59db9012dab148d82ce843fba520935b79fb7780[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sat Oct 9 09:09:32 2021 -0300
+
+    Organizando as interfaces e repositories que estavam no domain para o namespace do repositories. Agora está desacoplado do domain.
+
+[33mcommit 3cd9ad431af516bd8e35cfb2edc84a02a13ce4b5[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sat Oct 9 08:41:42 2021 -0300
+
+    adicionando as classes de agreement, configuração da startup e começando a criar usuário
+
+[33mcommit 2398ed1e9c4d65da6ef04385ed54397e073b0b2c[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Oct 5 21:40:01 2021 -0300
+
+    Criação dos arquivos de configuração de mapeamento de todas as classes.
+
+[33mcommit 542c16bf1cc814086acee191dda5ab74ce3bce74[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Tue Oct 5 19:12:48 2021 -0300
+
+    Gerando uma nova solução com o identity para cada usuário e implementando a configuração de conexão com o banco de dados na camada web.
+
+[33mcommit 70fb2ca0a745e9905ab7ac921b14a2e442694ce8[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Mon Oct 4 19:55:14 2021 -0300
+
+    Reestruturando o diretório Bidding para as interfaces.
+
+[33mcommit 2dc9013a39de151b8c1aebcaa287388f8903fe06[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Mon Oct 4 15:22:34 2021 -0300
+
+    Implementado o padrão UnitOfWork
+
+[33mcommit 7cf1a1af2bed807ae0e890aa554b1e09ccd95b68[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sun Oct 3 21:21:34 2021 -0300
+
+    Finalizando a implementação do padrão repositório e fazendo o padrão Unity of Work.
+
+[33mcommit ef5e890474d1a06d391d338b9a280e364743d5e1[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sun Oct 3 19:13:39 2021 -0300
+
+    Adicionado todas as classes concretas e o contexto.
+
+[33mcommit b73fa5d5620ba2eb07ab1331aa55ac7b3df28192[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sun Oct 3 11:08:36 2021 -0300
+
+    Adicionei todas as classes repositories na camada repositório.
+
+[33mcommit 526556e4425bc4ba3a6fb0e717ffce368dc32e19[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sat Oct 2 19:14:38 2021 -0300
+
+    Inserção das relações em todas as classes e criação da validação por entidade.
+
+[33mcommit 701a9c0f5d0eef02b2a53efa976c3ab3e3b1e76d[m
+Author: Leonardo Ruoso Vendramini <leonardo_vendramini@hotmail.com>
+Date:   Sat Oct 2 08:51:50 2021 -0300
+
+    Commit inicial. Criação do projeto, camadas e classes de domínio iniciais.

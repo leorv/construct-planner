@@ -21,6 +21,7 @@ export class ContractComponent implements OnInit {
     contracts: Contract[] = [];
     // contractUsers: ContractUser[] = [];
     // contratedUsers: User[] = [];
+    idToRemove: number = 0;
 
 
     constructor(
@@ -55,9 +56,21 @@ export class ContractComponent implements OnInit {
     contractDetails(id: number) {
         this.router.navigate(['contract-details', id.toString()]);
     }
-    contractDelete(id: number){
-        this.contractService.removeContract(id);
-        this.router.navigate(['contracts']);
+    deleteId(id: number){
+        this.idToRemove = id;
+    }
+    contractDelete(){
+        this.contractService.removeContract(this.idToRemove).subscribe(
+            result => {
+                var _index = this.contracts.findIndex(contract => contract.contractId == this.idToRemove);
+                this.contracts.splice(_index,1);
+                console.log("deletado com sucesso.");
+            },
+            err => {
+                console.log("Ocorreu um erro ao deletar.", err);
+            }
+        )
+               
     }
     
 

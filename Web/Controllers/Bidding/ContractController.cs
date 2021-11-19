@@ -119,6 +119,7 @@ namespace Web.Controllers.Bidding
 
                 unitOfWork.ContractRepository.Remove(contract);
                 unitOfWork.SaveChanges();
+                Console.WriteLine("Contrato deletado.");
 
                 return NoContent(); // 204
             }

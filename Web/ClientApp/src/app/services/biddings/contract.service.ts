@@ -55,7 +55,7 @@ export class ContractService {
     }
     // DELETE
     public removeContract(id: number) : Observable<Contract> {
-        return this.http.delete<Contract>(this.baseUrl.concat(this.apiUrl).concat(id.toString()));
+        return this.http.delete<Contract>(this.baseUrl.concat(this.apiUrl, id.toString()));
     }
 
     public sessionClear() {
