@@ -51,4 +51,7 @@ export class LoginComponent implements OnInit {
         );
         this.spinnerActive = false;
     }
+    toCreateUser(){
+        this.router.navigate(['/create-user']);
+    }
 }

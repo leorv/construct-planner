@@ -35,7 +35,7 @@
                     Entrar
                 </button>
                 <div>
-                    <small class="font-weight-bold">Não possui uma conta? <a class="text-danger">Registrar</a> </small>
+                    <small class="font-weight-bold">Não possui uma conta? <a class="text-danger" [routerLink]="['/create-user']">Registrar</a> </small>
                 </div>
                 <div class="alert alert-danger" *ngIf="message">
                     {{ message }}

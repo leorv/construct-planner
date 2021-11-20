@@ -1,0 +1,68 @@
+<h1 class="h3 mb-3 fw-normal">Criar conta</h1>
+<form class="form-signin">
+
+    <!-- public userId: number =0;
+    public name: string = '';
+    public lastname: string = '';
+    public email: string = '';
+    public password: string = '';
+    public photo: string = '';
+    public contracts: Contract[] = [];
+    public contractsagreements: ContractAgreement[] = [];
+    public additives: Additive[] = []; -->
+
+    <!-- NOME -->
+    <div class="form-floating">
+        <input type="text" name="name" class="form-control" id="floatingName" placeholder="Nome" [(ngModel)]="user.name"
+            #name="ngModel" required>
+        <label for="floatingName">Nome</label>
+
+        <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.hasError('required')">Nome é de preenchimento obrigatório.</div>
+        </div>
+    </div>
+    <!-- SOBRENOME -->
+    <div class="form-floating">
+        <input type="text" name="lastname" class="form-control" id="floatingLastName" placeholder="Sobrenome"
+            [(ngModel)]="user.lastname" #lastname="ngModel" required>
+        <label for="floatingLastName">Sobrenome</label>
+
+        <div class="alert alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+            <div *ngIf="lastname.hasError('required')">Sobrenome é de preenchimento obrigatório.</div>
+        </div>
+    </div>
+    <!-- E-MAIL -->
+    <div class="form-floating">
+        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="seu-email@email.com"
+            [(ngModel)]="user.email" #email="ngModel" email required>
+        <label for="floatingInput">Endereço de e-mail</label>
+
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.hasError('required')">E-mail é de preenchimento obrigatório.</div>
+            <div *ngIf="email.hasError('email')">E-mail não está no formato correto.</div>
+        </div>
+    </div>
+    <!-- SENHA -->
+    <div class="form-floating">
+        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Senha"
+            [(ngModel)]="user.password" #password="ngModel" required>
+        <label for="floatingPassword">Senha</label>
+        <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.hasError('required')">
+                A senha deve ser informada.
+            </div>
+        </div>
+        <!-- PHOTO -->
+        <!-- IMPLEMENTAR INSERÇÃO DA FOTO E A GRAVAÇÃO DO CAMINHO NA VARIÁVEL -->
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="createUser()" [disabled]="spinnerActive">
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="spinnerActive"></span>
+            Registrar
+        </button>
+        <div class="alert alert-danger" *ngIf="message">
+            {{ message }}
+        </div>
+
+    </div>
+
+</form>

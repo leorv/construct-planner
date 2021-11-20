@@ -28,6 +28,7 @@ import { InputComponent } from './components/price-reference/input/input.compone
 import { SourceComponent } from './components/price-reference/source/source.component';
 import { SourceItemComponent } from './components/price-reference/source-item/source-item.component';
 import { SpreadsheetItemComponent } from './components/bidding/spreadsheet-item/spreadsheet-item.component';
+import { CreateUserComponent } from './components/user/create-user/create-user.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { SpreadsheetItemComponent } from './components/bidding/spreadsheet-item/
         ContractComponent,
         ContractDetailsComponent,
         ContractCreateComponent,
+        CreateUserComponent,
         AdditiveComponent,
         ClauseComponent,
         SpreadsheetComponent,
@@ -51,6 +53,7 @@ import { SpreadsheetItemComponent } from './components/bidding/spreadsheet-item/
         SourceComponent,
         SourceItemComponent,
         SpreadsheetItemComponent
+        
     ],
     imports: [
         BrowserModule,

@@ -10,7 +10,7 @@ import { Observable } from "rxjs"
 export class UserService {
     private baseUrl: string;
     private _user!: User;
-    private addressService: string = "api/user/";
+    private apiUrl: string = "api/user/";
 
     get user(): User {
         let user_json = localStorage.getItem("AuthenticatedUser");
@@ -53,21 +53,26 @@ export class UserService {
         }
 
         const address = "UserVerify";
-        return this.http.post<User>(this.baseUrl.concat(this.addressService, address), body, { headers });
+        return this.http.post<User>(this.baseUrl.concat(this.apiUrl, address), body, { headers });
     }
 
     public getUserById(id: number): Observable<User> {
         var address = id.toString();
-        return this.http.get<User>(this.baseUrl.concat(this.addressService,address));
+        return this.http.get<User>(this.baseUrl.concat(this.apiUrl,address));
     }
 
     public getAllUsers(): Observable<User[]> {
-        return this.http.get<User[]>(this.baseUrl.concat(this.addressService));
+        return this.http.get<User[]>(this.baseUrl.concat(this.apiUrl));
+    }
+
+    // POST: Create
+    public createUser(user: User): Observable<User> {
+        return this.http.post<User>(this.baseUrl.concat(this.apiUrl), user);
     }
 
     // GET: All
-    // public getContracts(): Observable<Contract[]> {
-    //     return this.http.get<Contract[]>(this.baseUrl.concat(this.apiUrl));
+    // public getUsers(): Observable<User[]> {
+    //     return this.http.get<User[]>(this.baseUrl.concat(this.apiUrl));
     // }
 }
 
