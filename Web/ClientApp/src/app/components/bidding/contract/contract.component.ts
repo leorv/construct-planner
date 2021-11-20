@@ -36,12 +36,10 @@ export class ContractComponent implements OnInit {
     }
 
     getAllContracts(){
-        this.contractService.getContracts().subscribe(
+        this.contractService.findContracts(this.userService.user).subscribe(
             (data) => {
                 console.log('Contratos recarregados.');
                 this.contracts = data;
-                // this.getContractsAndUsers(this.contracts);
-                // this.getContratedUsers(this.contracts);
             },
             (error) => {
                 console.log(error);

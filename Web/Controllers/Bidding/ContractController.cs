@@ -20,20 +20,6 @@ namespace Web.Controllers.Bidding
             this.unitOfWork = unitOfWork;
         }
 
-        // GET: api/<ContractController>
-        [HttpGet]
-        public IActionResult Get()
-        {
-            try
-            {
-                return Ok(unitOfWork.ContractRepository.GetAll());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         // GET api/<ContractController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
@@ -66,6 +52,20 @@ namespace Web.Controllers.Bidding
             }
         }
 
+        // POST: api/<ContractController>/GetAll
+        [HttpPost("GetAll")]
+        public IActionResult GetAll([FromBody] Contract contract)
+        {
+            try
+            {              
+                return Ok(unitOfWork.ContractRepository.Find(c => c.UserId == contract.UserId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         // PUT api/<ContractController>/5
         [HttpPut("{id}")]
         public IActionResult Put([FromRoute] int id, [FromBody] Contract contract)
@@ -78,20 +78,6 @@ namespace Web.Controllers.Bidding
                 }
 
                 contract.ContractId = id;
-
-                // ========================================================
-                // Esta validação é um quebra galho. Extremamente vulnerável.
-                // Posteriormente, criar um método para validar toda alteração
-                // que é feita nas entidades. Isto é, se o usuário que está
-                // fazendo as alterações tem a permissão pra isso.
-                // ========================================================
-                //long _auxId = unitOfWork.ContractRepository
-                //    .SingleOrDefault(c => c.UserId == contract.UserId).UserId;
-                //if (!(contract.UserId == _auxId))
-                //{
-                //    return BadRequest($"O usuário não possui permissão para realizar alterações.");
-                //}
-                // ========================================================
 
                 unitOfWork.ContractRepository.Update(contract);
                 unitOfWork.SaveChanges();
