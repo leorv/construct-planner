@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Bidding;
+using Domain.Entities.Bidding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace Repository.Config.Bidding
 {
-    public class ClauseConfiguration : IEntityTypeConfiguration<Clause>
+    public class AdditiveClauseConfiguration : IEntityTypeConfiguration<AdditiveClause>
     {
-        public void Configure(EntityTypeBuilder<Clause> builder)
+
+        public void Configure(EntityTypeBuilder<AdditiveClause> builder)
         {
-            builder.ToTable("Clause");
+            builder.ToTable("AdditiveClause");
 
-            builder.HasKey(c => c.ClauseId);
+            builder.HasKey(c => c.AdditiveClauseId);
 
-            builder.Property(c => c.ClauseId)
+            builder.Property(c => c.AdditiveClauseId)
                 .HasColumnType("bigint");
             builder.Property(c => c.Number)
                 .HasColumnType("varchar")
@@ -26,10 +27,10 @@ namespace Repository.Config.Bidding
                 .HasColumnType("varchar")
                 .HasMaxLength(2048);
 
-
-            builder.HasOne(c => c.Contract)
-                .WithMany(c => c.Clauses)
-                .HasForeignKey(c => c.ContractId);
+            builder.HasOne(a => a.Additive)
+            .WithMany(c => c.AdditiveClauses)
+            .HasForeignKey(a => a.AdditiveID);
         }
+
     }
 }

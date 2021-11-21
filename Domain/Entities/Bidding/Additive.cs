@@ -24,9 +24,9 @@ namespace Domain.Entities.Bidding
         public virtual User User { get; set; }
         public long ContractId { get; set; } // FK
         public virtual Contract Contract { get; set; }
-        public virtual ICollection<Clause> Clauses {  get; set; }
+        public virtual ICollection<AdditiveClause> AdditiveClauses {  get; set; }
         //public long SpreadsheetId { get; set; }
-        public virtual Spreadsheet Spreadsheet {  get; set; }
+        public virtual AdditiveSpreadsheet AdditiveSpreadsheet {  get; set; }
         //public virtual ICollection<AdditiveUser> AdditiveUsers { get; set; }
         public virtual ICollection<AdditiveAgreement> AdditiveAgreements { get; set; }
 

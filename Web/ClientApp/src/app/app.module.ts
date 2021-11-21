@@ -1,3 +1,4 @@
+import { ClauseService } from './services/biddings/clause.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
@@ -29,6 +30,7 @@ import { SourceComponent } from './components/price-reference/source/source.comp
 import { SourceItemComponent } from './components/price-reference/source-item/source-item.component';
 import { SpreadsheetItemComponent } from './components/bidding/spreadsheet-item/spreadsheet-item.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
+import { DataTransferService } from './services/data-transfer.service';
 
 
 @NgModule({
@@ -63,8 +65,10 @@ import { CreateUserComponent } from './components/user/create-user/create-user.c
     ],
     providers: [
         ContractService,
+        ClauseService,
         UserService,
         RouteGuard,
+        DataTransferService,
         { provide: 'BASE_URL', useFactory: getBaseUrl }
     ],
     bootstrap: [AppComponent]

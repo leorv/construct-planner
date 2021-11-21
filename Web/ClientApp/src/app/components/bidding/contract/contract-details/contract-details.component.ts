@@ -1,3 +1,5 @@
+import { DataTransferService } from './../../../../services/data-transfer.service';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user/user.service';
 import { ContractService } from './../../../../services/biddings/contract.service';
@@ -20,7 +22,9 @@ export class ContractDetailsComponent implements OnInit {
     constructor(
         private contractService: ContractService,
         private userService: UserService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router,
+        private dataTransferService: DataTransferService
     ) { }
 
     ngOnInit(): void {
@@ -29,9 +33,14 @@ export class ContractDetailsComponent implements OnInit {
         const par = this.route.snapshot.paramMap.get('id');
         console.log(par);
         if (par != null) {
-            this.getContract(parseInt(par));            
+            this.getContract(parseInt(par));
         }        
     }
+    shareData(data: any){
+        this.dataTransferService.sendAnything(data); // Para mandar algo para outro componente.
+    }
+
+
     getContract(id: number){
         console.log('contract id:');
         console.log(id);
@@ -69,6 +78,10 @@ export class ContractDetailsComponent implements OnInit {
                 console.log(err.error);
             }
         );
+    }
+
+    goToClauses(contractId: number){
+        this.router.navigate(['clauses', this.contract.contractId.toString()]);        
     }
 
 

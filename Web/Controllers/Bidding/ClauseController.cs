@@ -52,6 +52,7 @@ namespace Web.Controllers.Bidding
         {
             try
             {
+                Console.WriteLine("Enviando para a unity of work.");
                 unitOfWork.ClauseRepository.Add(clause);
                 unitOfWork.SaveChanges();
                 return Created("api/[controller]", clause); // 201
@@ -59,6 +60,19 @@ namespace Web.Controllers.Bidding
             catch (Exception ex)
             {
                 return BadRequest(ex.Message); // 404
+            }
+        }
+
+        [HttpPost("GetAll")]
+        public IActionResult GetAll([FromBody] int id)
+        {
+            try
+            {
+                return Ok(unitOfWork.ClauseRepository.Find(c => c.ContractId == id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 

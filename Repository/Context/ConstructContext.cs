@@ -15,8 +15,12 @@ namespace Repository.Context
         // Bidding
         public DbSet<AdditiveAgreement> AdditiveAgreements { get; set; }
         //public DbSet<AdditiveUser> AdditiveParticipants { get; set; }
+        public DbSet<AdditiveClause> AdditiveClauses {get; set;}
         public DbSet<Additive> Additives { get; set; }
         //public DbSet<ClauseAgreement> ClauseAgreements { get; set; }
+        public DbSet<AdditiveLevel> AdditiveLevels {get; set;}
+        public DbSet<AdditiveSpreadsheet> AdditiveSpreadsheets {get; set;}
+        public DbSet<AdditiveSpreadsheetItem> AdditiveSpreadsheetItems {get; set;}
         public DbSet<Clause> Clauses { get; set; }
         public DbSet<ContractAgreement> ContractAgreements { get; set; }
         public DbSet<ContractUser> ContractUsers { get; set; }
@@ -43,7 +47,11 @@ namespace Repository.Context
         {
             // Bidding
             modelBuilder.ApplyConfiguration(new AdditiveAgreementConfiguration());
+            modelBuilder.ApplyConfiguration(new AdditiveClauseConfiguration());
             modelBuilder.ApplyConfiguration(new AdditiveConfiguration());
+            modelBuilder.ApplyConfiguration(new AdditiveLevelConfiguration());
+            modelBuilder.ApplyConfiguration(new AdditiveSpreadsheetConfiguration());
+            modelBuilder.ApplyConfiguration(new AdditiveSpreadsheetItemConfiguration());
             modelBuilder.ApplyConfiguration(new ClauseConfiguration());
             modelBuilder.ApplyConfiguration(new ContractAgreementConfiguration());
             modelBuilder.ApplyConfiguration(new ContractConfiguration());

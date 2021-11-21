@@ -1,5 +1,5 @@
 import { User } from './../../models/user.model';
-import { HttpHeaders } from '@angular/common/http';
+// import { HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
@@ -10,11 +10,10 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class ContractService {
-
     private baseUrl: string;
     private apiUrl: string = 'api/contract/';
     private apiCall: string = '';
-    private _contract: Contract = new Contract;
+    private _contract: Contract = new Contract();
 
     constructor(
         private http: HttpClient,

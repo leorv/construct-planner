@@ -1,1 +1,75 @@
-<p>clause works!</p>
+<h2>Cláusulas do contrato nº {{ contract.number }}/{{ contract.year }}</h2>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+    Nova cláusula
+</button>
+
+<ul>
+    <li *ngFor="let clause of clauses">
+        <p>Art.{{ clause.number }} - {{ clause.text }}</p>
+        <button class="btn btn-primary" (click)="editClause()">Editar</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletarModal"
+            (click)="deleteId(clause.clauseId)">
+            Deletar
+        </button>
+
+    </li>
+</ul>
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Nova cláusula</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating">
+                    <input style="width: 250px;" type="text" name="clauseNumber" class="form-control" id="floatingclauseNumber"
+                        placeholder="Número" [(ngModel)]="clause.number" #clauseNumber="ngModel" required>
+                    <label for="floatingclauseNumber">Número</label>
+
+                    <div class="alert alert-danger" *ngIf="clauseNumber.invalid && (clauseNumber.dirty || clauseNumber.touched)">
+                        <div *ngIf="clauseNumber.hasError('required')">Informe um número.</div>
+                        <div *ngIf="clauseNumber.hasError('number')">Só é permitido números.</div>
+                    </div>
+
+                    <input type="text" name="clauseText" class="form-control" id="floatingclauseText"
+                        placeholder="Texto" [(ngModel)]="clause.text" #clauseText="ngModel" required>
+                    <label for="floatingclauseText">Texto da cláusula</label>
+
+                    <div class="alert alert-danger" *ngIf="clauseText.invalid && (clauseText.dirty || clauseText.touched)">
+                        <div *ngIf="clauseText.hasError('required')">O texto é obridatório.</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" data-bs-dismiss="modal"
+                    (click)="createClause()" [disabled]="spinnerActive">
+                    Adicionar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deletarModal" tabindex="-1" aria-labelledby="deletarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletarModalLabel">Confirmação</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que quer excluir esta cláusula?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    (click)="clauseDelete()">Deletar</button>
+            </div>
+        </div>
+    </div>
+</div>

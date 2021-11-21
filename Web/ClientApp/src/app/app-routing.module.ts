@@ -14,7 +14,7 @@ import { ContractDetailsComponent } from './components/bidding/contract/contract
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'create-user', component: CreateUserComponent},
+    { path: 'create-user', component: CreateUserComponent },
     // TODO: Lembrar de colocar o canActivate nas rotas aqui...
 
     { path: 'contracts', component: ContractComponent, canActivate: [RouteGuard] },
@@ -22,12 +22,9 @@ const routes: Routes = [
     {
         path: 'contract-details/:id', component: ContractDetailsComponent, canActivate: [RouteGuard],
         children: [
-            {
-                path: 'clauses', component: ClauseComponent
-            },
-            {
-                path: 'spreadsheets', component: SpreadsheetComponent
-            } // TODO: implementar medições.
+            // { path: '', redirectTo:'clauses', pathMatch:'full'},
+            { path: 'clauses', component: ClauseComponent },
+            { path: 'spreadsheets', component: SpreadsheetComponent } // TODO: implementar medições.
         ]
     }
 ];

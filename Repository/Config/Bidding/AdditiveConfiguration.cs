@@ -49,10 +49,10 @@ namespace Repository.Config.Bidding
                 .WithMany(a => a.Additives)
                 .HasForeignKey(c => c.ContractId);
 
-            builder.HasMany(c => c.Clauses)
+            builder.HasMany(c => c.AdditiveClauses)
                 .WithOne(a => a.Additive);
 
-            builder.HasOne(s => s.Spreadsheet);
+            builder.HasOne(s => s.AdditiveSpreadsheet);
 
             //builder.HasMany(au => au.AdditiveUsers)
             //    .WithOne(a => a.Additive);

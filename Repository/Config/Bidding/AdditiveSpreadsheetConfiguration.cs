@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Bidding;
+using Domain.Entities.Bidding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Repository.Config.Bidding
 {
-    public class SpreadsheetConfiguration : IEntityTypeConfiguration<Spreadsheet>
+    public class AdditiveSpreadsheetConfiguration : IEntityTypeConfiguration<AdditiveSpreadsheet>
     {
-        public void Configure(EntityTypeBuilder<Spreadsheet> builder)
+        public void Configure(EntityTypeBuilder<AdditiveSpreadsheet> builder)
         {
-            builder.ToTable("Spreadsheet");
+            builder.ToTable("AdditiveSpreadsheet");
 
-            builder.HasKey(s => s.SpreadsheetId);
+            builder.HasKey(s => s.AdditiveSpreadsheetId);
 
-            builder.Property(s => s.SpreadsheetId)
+            builder.Property(s => s.AdditiveSpreadsheetId)
                 .HasColumnType("bigint");
 
             builder.Property(s => s.Name)
@@ -40,15 +40,8 @@ namespace Repository.Config.Bidding
                 .HasColumnType("char")
                 .HasMaxLength(2);
 
-            builder.HasOne(c => c.Contract)
-                .WithMany(s => s.Spreadsheets)
-                .HasForeignKey(s => s.ContractId);
-
-            builder.HasMany(a => a.Addresses)
-                .WithOne(s => s.Spreadsheet);
-
-            builder.HasMany(l => l.Levels)
-                .WithOne(s => s.Spreadsheet);
+            builder.HasMany(l => l.AdditiveLevels)
+                .WithOne(s => s.AdditiveSpreadsheet);
 
         }
     }

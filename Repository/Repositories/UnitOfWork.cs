@@ -40,6 +40,30 @@ namespace Repository.Repositories
         //       return additiveParticipantRepository;
         //    }
         //}
+        private IAdditiveClauseRepository additiveClauseRepository = null;
+        public IAdditiveClauseRepository AdditiveClauseRepository
+        {
+            get
+            {
+                if (additiveClauseRepository == null)
+                {
+                    additiveClauseRepository = new AdditiveClauseRepository(context);
+                }
+                return additiveClauseRepository;
+            }
+        }
+        private IAdditiveLevelRepository additiveLevelRepository = null;
+        public IAdditiveLevelRepository AdditiveLevelRepository
+        {
+            get
+            {
+                if (additiveLevelRepository == null)
+                {
+                    additiveLevelRepository = new AdditiveLevelRepository(context);
+                }
+                return additiveLevelRepository;
+            }
+        }
         private IAdditiveRepository additiveRepository = null;
         public IAdditiveRepository AdditiveRepository
         {
@@ -52,6 +76,32 @@ namespace Repository.Repositories
                 return additiveRepository;
             }
         }
+        private IAdditiveSpreadsheetItemRepository additiveSpreadsheetItemRepository = null;
+        public IAdditiveSpreadsheetItemRepository AdditiveSpreadsheetItemRepository
+        {
+            get
+            {
+                if (additiveSpreadsheetItemRepository == null)
+                {
+                    additiveSpreadsheetItemRepository = new AdditiveSpreadsheetItemRepository(context);
+                }
+                return additiveSpreadsheetItemRepository;
+            }
+        }
+        private IAdditiveSpreadsheetRepository additiveSpreadsheetRepository = null;
+        public IAdditiveSpreadsheetRepository AdditiveSpreadsheetRepository
+        {
+            get
+            {
+                if (additiveSpreadsheetRepository == null)
+                {
+                    additiveSpreadsheetRepository = new AdditiveSpreadsheetRepository(context);
+                }
+                return additiveSpreadsheetRepository;
+            }
+        }
+
+
         //private IClauseAgreementRepository clauseAgreementRepository = null;
         //public IClauseAgreementRepository ClauseAgreementRepository
         //{
@@ -226,6 +276,7 @@ namespace Repository.Repositories
         }
 
 
+        // ============= MÉTODOS =============
         public UnitOfWork(ConstructContext context)
         {
             this.context = context;
