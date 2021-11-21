@@ -68,7 +68,7 @@ namespace Web.Controllers.Bidding
         {
             try
             {
-                return Ok(unitOfWork.AdditiveSpreadsheetItemRepository.Find(c => c.ContractId == id));
+                return Ok(unitOfWork.AdditiveSpreadsheetItemRepository.Find(a => a.AdditiveLevelId == id));
             }
             catch (Exception ex)
             {
