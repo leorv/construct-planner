@@ -61,15 +61,58 @@ namespace Web.Controllers.Bidding
                 return BadRequest(ex.Message); // 404
             }
         }
+        // POST: api/<SpreadsheetController>/GetAll
+        [HttpPost("GetAll")]
+        public IActionResult GetAll([FromBody] int contractId)
+        {
+            try
+            {
+                return Ok(unitOfWork.SpreadsheetRepository.Find(s => s.ContractId == contractId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        // PUT api/<SpreadsheetController>/5
+        // PUT Update api/<SpreadsheetController>/id
         [HttpPut("{id}")]
-        public IActionResult Put([FromRoute] int id, [FromBody] Spreadsheet spreadsheet)
+        public IActionResult Update([FromRoute] int id, [FromBody] Spreadsheet spreadsheet)
         {
             try
             {
                 if (spreadsheet == null)
                 {
+                    Console.WriteLine("Erro: A planilha que foi enviada para atualização é nula.");
+                    return BadRequest();
+                }
+                spreadsheet.SpreadsheetId = id;
+
+                Console.WriteLine("Dentro da API");
+                
+                unitOfWork.SpreadsheetRepository.Update(spreadsheet);
+                unitOfWork.SaveChanges();
+                return NoContent(); // 204
+            }
+            catch (OperationCanceledException ex)
+            {
+                Console.WriteLine("A operação foi cancelado por um erro.");
+                return BadRequest(ex.Message); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao tentar atualizar a planilha.");
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPatch]
+        public IActionResult Patch([FromRoute] int id, [FromBody] Spreadsheet spreadsheet)
+        {
+            try
+            {
+                if (spreadsheet == null)
+                {
+                    Console.WriteLine("Erro: A planilha que foi enviada para atualização é nula.");
                     return BadRequest();
                 }
 
@@ -81,6 +124,7 @@ namespace Web.Controllers.Bidding
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Erro ao tentar atualizar a planilha.");
                 return BadRequest(ex.Message);
             }
         }

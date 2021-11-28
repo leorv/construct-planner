@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Repository.Repositories;
 using Repository.Interfaces;
 
+
 namespace Web
 {
     public class Startup
@@ -27,7 +28,7 @@ namespace Web
 
             Configuration = builder.Build();
         }
-                
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -43,9 +44,12 @@ namespace Web
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllersWithViews();
-            // services.AddRazorPages();
+                //.AddNewtonsoftJson(options =>
+                //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft
+                //        .Json.ReferenceLoopHandling.Ignore);
+            services.AddRazorPages();
 
-            services.AddTransient<IUnitOfWork,UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             // Caso não usássemos a unit of work, teríamos que implementar
             // AddScooped para todas as nossas interfaces.
 

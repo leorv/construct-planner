@@ -1,3 +1,6 @@
+import { FileUploadService } from './components/admin/file-upload-service/file-upload.service';
+import { SpreadsheetItemService } from './services/biddings/spreadsheet-item.service';
+import { SpreadsheetService } from './services/biddings/spreadsheet.service';
 import { ClauseService } from './services/biddings/clause.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,6 +34,8 @@ import { SourceItemComponent } from './components/price-reference/source-item/so
 import { SpreadsheetItemComponent } from './components/bidding/spreadsheet-item/spreadsheet-item.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
 import { DataTransferService } from './services/data-transfer.service';
+import { SourceUploadComponent } from './components/admin/source-upload/source-upload.component';
+import { EditSpreadsheetComponent } from './components/bidding/spreadsheet/edit-spreadsheet/edit-spreadsheet/edit-spreadsheet.component';
 
 
 @NgModule({
@@ -54,7 +59,9 @@ import { DataTransferService } from './services/data-transfer.service';
         InputComponent,
         SourceComponent,
         SourceItemComponent,
-        SpreadsheetItemComponent
+        SpreadsheetItemComponent,
+        SourceUploadComponent,
+        EditSpreadsheetComponent
         
     ],
     imports: [
@@ -66,8 +73,11 @@ import { DataTransferService } from './services/data-transfer.service';
     providers: [
         ContractService,
         ClauseService,
+        SpreadsheetService,
+        SpreadsheetItemService,
         UserService,
         RouteGuard,
+        FileUploadService,
         DataTransferService,
         { provide: 'BASE_URL', useFactory: getBaseUrl }
     ],

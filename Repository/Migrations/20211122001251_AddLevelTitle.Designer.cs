@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository.Context;
 
 namespace Repository.Migrations
 {
     [DbContext(typeof(ConstructContext))]
-    partial class ConstructContextModelSnapshot : ModelSnapshot
+    [Migration("20211122001251_AddLevelTitle")]
+    partial class AddLevelTitle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -214,8 +216,8 @@ namespace Repository.Migrations
                         .HasColumnType("varchar(48)");
 
                     b.Property<string>("Unit")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.HasKey("AdditiveSpreadsheetItemId");
 
@@ -528,8 +530,8 @@ namespace Repository.Migrations
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("Unit")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.HasKey("SourceItemId");
 
@@ -613,8 +615,8 @@ namespace Repository.Migrations
                         .HasColumnType("varchar(48)");
 
                     b.Property<string>("Unit")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.HasKey("SpreadsheetItemId");
 

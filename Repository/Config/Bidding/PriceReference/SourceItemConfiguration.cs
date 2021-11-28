@@ -27,7 +27,7 @@ namespace Repository.Config.Bidding.PriceReference
                 .HasMaxLength(256);
             builder.Property(si => si.Unit)
                 .HasColumnType("varchar")
-                .HasMaxLength(8);
+                .HasMaxLength(128);
             builder.Property(si => si.ManPower)
                 .HasColumnType("decimal");
             builder.Property(si => si.Material)

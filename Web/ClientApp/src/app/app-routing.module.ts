@@ -1,3 +1,5 @@
+import { EditSpreadsheetComponent } from './components/bidding/spreadsheet/edit-spreadsheet/edit-spreadsheet/edit-spreadsheet.component';
+import { SourceUploadComponent } from './components/admin/source-upload/source-upload.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
 import { SpreadsheetComponent } from './components/bidding/spreadsheet/spreadsheet.component';
 import { ClauseComponent } from './components/bidding/clause/clause.component';
@@ -16,6 +18,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'create-user', component: CreateUserComponent },
     // TODO: Lembrar de colocar o canActivate nas rotas aqui...
+    { path: 'addsource-item', component: SourceUploadComponent },
 
     { path: 'contracts', component: ContractComponent, canActivate: [RouteGuard] },
     { path: 'contract-create', component: ContractCreateComponent, canActivate: [RouteGuard] },
@@ -24,7 +27,11 @@ const routes: Routes = [
         children: [
             // { path: '', redirectTo:'clauses', pathMatch:'full'},
             { path: 'clauses', component: ClauseComponent },
-            { path: 'spreadsheets', component: SpreadsheetComponent } // TODO: implementar medições.
+            { path: 'spreadsheets', component: SpreadsheetComponent },
+            { path: 'edit-spreadsheet', component: EditSpreadsheetComponent }
+
+
+            // TODO: implementar medições.
         ]
     }
 ];

@@ -61,6 +61,19 @@ namespace Web.Controllers.Bidding
                 return BadRequest(ex.Message); // 404
             }
         }
+        // POST: api/<SpreadsheetController>/GetAll
+        [HttpPost("GetAll")]
+        public IActionResult GetAll([FromBody] int spreadsheetId)
+        {
+            try
+            {              
+                return Ok(unitOfWork.LevelRepository.Find(s => s.SpreadsheetId == spreadsheetId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         // PUT api/<LevelController>/5
         [HttpPut("{id}")]
@@ -77,7 +90,7 @@ namespace Web.Controllers.Bidding
 
                 unitOfWork.LevelRepository.Update(level);
                 unitOfWork.SaveChanges();
-                return NoContent(); // 200
+                return NoContent(); // 204
             }
             catch (Exception ex)
             {

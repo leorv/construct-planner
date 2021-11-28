@@ -89,6 +89,13 @@ namespace Repository.Repositories
 
         public void Update(TEntity entity)
         {
+            //if (entity == null)
+            //{
+            //    throw new ArgumentNullException(nameof(entity));
+            //}
+            //Context.Entry(entity).State = EntityState.Modified;
+            //dbset.Update(entity);
+
             dbset.Attach(entity);
             Context.Entry(entity).State = EntityState.Modified;
         }

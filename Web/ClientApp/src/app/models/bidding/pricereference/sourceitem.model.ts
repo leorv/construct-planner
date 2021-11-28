@@ -1,14 +1,15 @@
 export class SourceItem {
-  constructor(
-    public sourceItemId: number,
-    public code: string,
-    public description: string,
-    public unit: string,
-    public manpower: number,
-    public material: number,
-    public totalUnitValue: number,
-    public sourceId: number
-  ) {
+    public sourceItemId: number = 0;
+    public code: string = '';
+    public description: string = '';
+    public unit: string = '';
+    public manpower: number = 0;
+    public material: number = 0;
+    public totalUnitValue: number = 0;
+    public sourceId: number = 0;
+    constructor(
 
-  }
+    ) {
+
+    }
 }

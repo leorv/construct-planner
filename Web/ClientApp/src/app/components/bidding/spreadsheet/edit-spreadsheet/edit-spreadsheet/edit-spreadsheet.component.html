@@ -1,0 +1,36 @@
+<p>edit-spreadsheet works!</p>
+<a class="btn btn-primary" routerLink="../spreadsheets">Voltar</a>
+<hr>
+<h2>Editar planilha</h2>
+
+<form>
+    <div class="form-group">
+        <label for="name">Nome da planilha:</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="spreadsheet.name" id="name"
+            aria-describedby="nameHelp" placeholder="Nome da planilha">
+        <small id="nameHelp" class="form-text text-muted">Se trata de um nome para identificação neste sistema, esta
+            informação não será inserida em documentação oficial.</small>
+    </div>
+    <div class="form-group">
+        <label for="title">Título da planilha:</label>
+        <input type="text" class="form-control" name="title" [(ngModel)]="spreadsheet.title" id="title"
+            aria-describedby="titleHelp" placeholder="Título da planilha">
+    </div>
+    <div class="form-group">
+        <label for="object">Descrição da planilha:</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="spreadsheet.description"
+            id="description" placeholder="Descrição da planilha">
+    </div>
+    <div class="form-group">
+        <label for="object">Autor da planilha:</label>
+        <input type="text" class="form-control" name="author" [(ngModel)]="spreadsheet.author" id="author"
+            placeholder="Autor da planilha">
+    </div>
+    <div class="form-group">
+        <label for="date">Data da planilha:</label>
+        <input type="date" class="form-control" name="date" [(ngModel)]="spreadsheet.date" id="date">
+    </div>
+    <!-- TODO: Implantar SD ou CD como Encumber Type. -->
+
+    <button type="submit" class="btn btn-primary" (click)="editSpreadsheet()">Atualizar a planilha</button>
+</form>

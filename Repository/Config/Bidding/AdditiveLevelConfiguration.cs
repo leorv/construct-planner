@@ -23,6 +23,10 @@ namespace Repository.Config.Bidding
                 .HasColumnType("varchar")
                 .HasMaxLength(64)
                 .IsRequired();
+            builder.Property(l => l.Title)
+                .HasColumnType("varchar")
+                .HasMaxLength(256)
+                .IsRequired();
 
             builder.HasOne(s => s.AdditiveSpreadsheet)
                 .WithMany(l => l.AdditiveLevels)

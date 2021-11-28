@@ -10,6 +10,7 @@ namespace Domain.Entities.Bidding
     {
         public long LevelId { get; set; }
         public string Name { get; set; }
+        public string Title { get; set; }
 
         public long SpreadsheetId { get; set; }
         public virtual Spreadsheet Spreadsheet { get; set; }

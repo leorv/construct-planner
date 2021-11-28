@@ -1,1 +1,234 @@
-<p>spreadsheet works!</p>
+<h3>Planilhas</h3>
+<button type="button" class="btn btn-primary" (click)="newSpreadsheet()">
+    Nova planilha
+</button>
+<a class="btn btn-primary" routerLink="../edit-spreadsheet" (click)="shareData(selectedSpreadsheet)">
+    Editar informações da planilha
+</a>
+<hr>
+<!-- <router-outlet></router-outlet> -->
+
+<hr>
+<P>Selecione a planilha:</P>
+<div>
+    <button type="button" class="btn btn-primary" *ngFor="let spreadsheet of spreadsheets"
+        (click)="selectSpreadsheet(spreadsheet.spreadsheetId)">
+        {{ spreadsheet.name }} - {{ spreadsheet.date }}
+    </button>
+</div>
+
+<hr>
+<a class="btn btn-primary" (click)="AddLevel()">Adicionar Nível</a>
+<a class="btn btn-primary" (click)="addSpreadsheetItem()">Adicionar item</a>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col-1">Fonte</th>
+            <th scope="col-1">Referência</th>
+            <th scope="col-3">Descrição</th>
+            <th scope="col-1">Unidade</th>
+            <th scope="col-1">Quantidade</th>
+            <th scope="col-1">R$ M.O.</th>
+            <th scope="col-1">R$ Material</th>
+            <th scope="col-1">R$ Total</th>
+            <th scope="col-2"></th>
+        </tr>
+    </thead>
+    <!-- <tbody *ngFor="let level of levels">
+         -->
+    <tbody>
+        <!-- <tr>
+            <td colspan="9"> {{ level.title }} </td>
+            <a class="btn btn-primary" (click)="SelectLevel(level)">Selecionar nível</a>
+            <a class="btn btn-primary">Editar</a>
+            <a class="btn btn-danger">Excluir</a>
+        </tr> -->
+        <tr>
+            <td colspan="9"> Serviços Iniciais </td>
+            <a class="btn btn-primary" >Selecionar nível</a>
+            <a class="btn btn-primary">Editar</a>
+            <a class="btn btn-danger">Excluir</a>
+        </tr>
+        <tr>
+            <td>Composição</td>
+            <td>1</td>
+            <td>LOCAÇÃO DE REDE DE ÁGUA</td>
+            <td>M2</td>
+            <td>4,50</td>
+            <td></td>
+            <td></td>
+            <td>{{ 1738.55 | currency:'BRL' }}</td>
+            <td>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editItemModal"
+                    >
+                    Editar
+                </button>
+                <button type="button" class="btn btn-danger" >
+                    Deletar
+                </button>
+            </td>
+            <!-- <tr *ngFor="let item of allSpreadsheetItemsOfLevel(level)">
+            <td><input type="text" [(ngModel)]="item.source"></td>
+            <td><input type="text" [(ngModel)]="item.code"></td>
+            <td><input type="text" [(ngModel)]="item.description"></td>
+            <td><input type="text" [(ngModel)]="item.unit">  </td>
+            <td><input type="text" [(ngModel)]="item.amount"></td>
+            <td><input type="text" [(ngModel)]="item.manpower"></td>
+            <td><input type="text" [(ngModel)]="item.material"></td>
+            <td> {{ totalItemValue(item.manpower, item.material, item.amount) | currency:'BRL'}} </td>
+            <td>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editItemModal"
+                    (click)="SelectSpreadsheetItem(item)">
+                    Editar
+                </button>
+                <button type="button" class="btn btn-danger" (click)="spreadsheetItemDelete(item)">
+                    Deletar
+                </button>
+            </td>
+        </tr> -->
+        <!-- <tr>
+            <td colspan="9"> {{ totalLevelValue(level) | currency: 'BRL' }} </td>
+        </tr> -->
+    </tbody>
+    <tbody>
+        <tr>
+            <td colspan="9"> DRENAGEM PLUVIAL </td>
+            <a class="btn btn-primary">Selecionar nível</a>
+            <a class="btn btn-primary">Editar</a>
+            <a class="btn btn-danger">Excluir</a>
+        </tr>
+        <tr>
+            <td>SINAPI</td>
+            <td>99063</td>
+            <td>ESCAVAÇÃO MECANIZADA DE VALA PROF ATÉ 1,5M</td>
+            <td>M</td>
+            <td>206,00</td>
+            <td></td>
+            <td></td>
+            <td>{{ 3854.21 | currency:'BRL' }}</td>
+            <td>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editItemModal"
+                    >
+                    Editar
+                </button>
+                <button type="button" class="btn btn-danger">
+                    Deletar
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>SINAPI</td>
+            <td>91533</td>
+            <td>COMPACTADOR DE SOLOS DE PERCUSSÃO (SOQUETE) COM MOTOR A GASOLINA</td>
+            <td>CHP</td>
+            <td>9,80</td>
+            <td></td>
+            <td></td>
+            <td>{{ 404.35 | currency:'BRL' }}</td>
+            <td>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editItemModal"
+                    >
+                    Editar
+                </button>
+                <button type="button" class="btn btn-danger">
+                    Deletar
+                </button>
+            </td>
+        </tr>
+
+
+    </tbody>
+</table>
+
+<!-- Add item modal -->
+<!-- <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addItemModalLabel">Novo item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating">
+                    <input style="width: 250px; margin: 10px;" type="text" name="itemSource" class="form-control"
+                        id="floatingclauseNumber" placeholder="Número" [(ngModel)]="clause.number"
+                        #clauseNumber="ngModel" required>
+                    <label for="floatingclauseNumber">Número</label>
+
+                    <div class="alert alert-danger"
+                        *ngIf="clauseNumber.invalid && (clauseNumber.dirty || clauseNumber.touched)">
+                        <div *ngIf="clauseNumber.hasError('required')">Informe um número.</div>
+                        <div *ngIf="clauseNumber.hasError('number')">Só é permitido números.</div>
+                    </div>
+
+                    <input type="text" name="clauseText" class="form-control" id="floatingclauseText"
+                        placeholder="Texto" [(ngModel)]="clause.text" #clauseText="ngModel" required>
+                    <label for="floatingclauseText">Texto da cláusula</label>
+
+                    <div class="alert alert-danger"
+                        *ngIf="clauseText.invalid && (clauseText.dirty || clauseText.touched)">
+                        <div *ngIf="clauseText.hasError('required')">O texto é obridatório.</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" data-bs-dismiss="modal"
+                    (click)="createClause()" [disabled]="spinnerActive">
+                    Adicionar
+                </button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Edit Item Modal TODO: Adaptar completamente. -->
+<!-- <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Nova cláusula</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating">
+                    <input style="width: 250px;" type="text" name="clauseNumber" class="form-control"
+                        id="floatingclauseNumber" placeholder="Número" [(ngModel)]="clause.number"
+                        #clauseNumber="ngModel" required>
+                    <label for="floatingclauseNumber">Número</label>
+
+                    <div class="alert alert-danger"
+                        *ngIf="clauseNumber.invalid && (clauseNumber.dirty || clauseNumber.touched)">
+                        <div *ngIf="clauseNumber.hasError('required')">Informe um número.</div>
+                        <div *ngIf="clauseNumber.hasError('number')">Só é permitido números.</div>
+                    </div>
+
+                    <input type="text" name="clauseText" class="form-control" id="floatingclauseText"
+                        placeholder="Texto" [(ngModel)]="clause.text" #clauseText="ngModel" required>
+                    <label for="floatingclauseText">Texto da cláusula</label>
+
+                    <div class="alert alert-danger"
+                        *ngIf="clauseText.invalid && (clauseText.dirty || clauseText.touched)">
+                        <div *ngIf="clauseText.hasError('required')">O texto é obridatório.</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" data-bs-dismiss="modal"
+                    (click)="createClause()" [disabled]="spinnerActive">
+                    Adicionar
+                </button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<hr>
+<div>
+    <button type="button" class="btn btn-danger" (click)="deleteSpreadsheet()">
+        Excluir planilha
+    </button>
+</div>
