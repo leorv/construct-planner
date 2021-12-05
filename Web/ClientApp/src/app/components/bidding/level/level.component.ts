@@ -13,7 +13,6 @@ export class LevelComponent implements OnInit {
     @Input() level: Level = new Level();
     spreadsheetItems: SpreadsheetItem[] = [];
     item: SpreadsheetItem = new SpreadsheetItem();
-    showSpreadsheetItem: boolean = true;
 
     constructor(
         private levelService: LevelService,
@@ -73,11 +72,11 @@ export class LevelComponent implements OnInit {
         item.levelId = this.level.levelId;
         this.spreadsheetItemService.createSpreadsheetItem(item).subscribe(
             result => {
-                var _item = result;
-                if (this.level.spreadsheetItems == null){
-                    this.level.spreadsheetItems = [];
-                }
-                this.level.spreadsheetItems.push(_item);
+                var _item: SpreadsheetItem = result;
+                // if (this.level.spreadsheetItems == null){
+                //     this.level.spreadsheetItems = [];
+                // }
+                this.spreadsheetItems.push(_item);
 
                 console.log("Item adicionado com sucesso.");
             },
@@ -85,5 +84,9 @@ export class LevelComponent implements OnInit {
                 console.error("Ocorreu um erro ao tentar adicionar o item.");
             }
         )
+    }
+    removeItem(id: number){
+        var _index = this.spreadsheetItems.findIndex(s => s.spreadsheetItemId == id);
+        this.spreadsheetItems.splice(_index,1);
     }
 }

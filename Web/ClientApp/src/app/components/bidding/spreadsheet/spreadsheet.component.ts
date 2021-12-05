@@ -59,17 +59,9 @@ export class SpreadsheetComponent implements OnInit {
         this.levelService.findLevels(this.selectedSpreadsheet).subscribe(
             result => {
                 this.levels = result;
-                // Comentando essa parte para fazer a tentativa de passar dados pelo componente.
-                // for (let level of this.levels) {
-                //     if (level.spreadsheetItems == null){
-                //         level.spreadsheetItems = [];
-                //     }
-                //     this.getSpreadsheetItemsOfLevel(level);
-                // }
             },
             err => {
                 console.log("Ocorreu um erro ao buscar as planilhas relativas a este contrato.", err);
-
             }
         )
     }

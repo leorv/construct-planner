@@ -24,17 +24,15 @@
         <tr><a class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#addItemModal'+level.levelId">
                 Novo item</a>
         </tr>
-        <tr *ngIf="showSpreadsheetItem">
-            <app-spreadsheet-item *ngFor="let item of spreadsheetItems" [item]="item"
-                (remove)="showSpreadsheetItem = false">
+        
+            <app-spreadsheet-item [item]="item" *ngFor="let item of spreadsheetItems"
+                (remove)='removeItem($event)'>
             </app-spreadsheet-item>
-        </tr>
+        
         <tr>
             <td> {{ totalLevelValue() | currency: 'BRL' }} </td>
         </tr>
-
     </tbody>
-
 </table>
 
 

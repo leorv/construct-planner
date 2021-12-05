@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SpreadsheetItemComponent implements OnInit {
     @Input() item: SpreadsheetItem = new SpreadsheetItem();
-    @Output() remove = new EventEmitter();
+    @Output() remove = new EventEmitter<number>();
 
     constructor(
         private spreadsheetItemService: SpreadsheetItemService
@@ -36,6 +36,7 @@ export class SpreadsheetItemComponent implements OnInit {
     spreadsheetItemDelete(item: SpreadsheetItem){
         this.spreadsheetItemService.removeSpreadsheetItem(item.spreadsheetItemId).subscribe(
             result => {
+                this.remove.emit(item.spreadsheetItemId);
                 console.log("Item deletado com sucesso.");
             },
             err => {
