@@ -58,7 +58,7 @@ namespace Web.Controllers.Bidding
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message); // 404
+                return BadRequest(ex.Message); // 400
             }
         }
         // POST: api/<SpreadsheetController>/GetAll

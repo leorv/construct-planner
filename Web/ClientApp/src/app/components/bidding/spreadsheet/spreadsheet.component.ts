@@ -59,40 +59,19 @@ export class SpreadsheetComponent implements OnInit {
         this.levelService.findLevels(this.selectedSpreadsheet).subscribe(
             result => {
                 this.levels = result;
-                
-                for (let level of this.levels) {
-                    if (level.spreadsheetItems == null){
-                        level.spreadsheetItems = [];
-                    }
-                    this.getSpreadsheetItemsOfLevel(level);
-                }
+                // Comentando essa parte para fazer a tentativa de passar dados pelo componente.
+                // for (let level of this.levels) {
+                //     if (level.spreadsheetItems == null){
+                //         level.spreadsheetItems = [];
+                //     }
+                //     this.getSpreadsheetItemsOfLevel(level);
+                // }
             },
             err => {
                 console.log("Ocorreu um erro ao buscar as planilhas relativas a este contrato.", err);
 
             }
         )
-    }
-    getSpreadsheetItemsOfLevel(level: Level) {
-        this.spreadsheetItemService.findSpreadsheetItems(level).subscribe(
-            result => {
-                let _spreadsheetItems = result;
-                if (_spreadsheetItems != null) {
-                    var _levelIndex = this.levels.findIndex(l => l.levelId == _spreadsheetItems[0].levelId);
-                    for (let item of _spreadsheetItems) {
-                        this.levels[_levelIndex].spreadsheetItems.push(item);
-                    }
-                }
-                else {
-                    console.log("Nível: ".concat(level.name));
-                    console.log("Não há nenhum item neste nível da planilha.");
-                }
-            },
-            err => {
-                console.log("Ocorreu um erro ao tentar buscar os itens de cada nível da planilha.");
-            }
-        )
-
     }
     selectSpreadsheet(id: number) {
         var _spreadsheet = this.spreadsheets.find(s => s.spreadsheetId == id);
@@ -143,29 +122,6 @@ export class SpreadsheetComponent implements OnInit {
         )
 
     }
-    totalLevelValue(level: Level): number {
-        var total = 0;
-        for (let item of level.spreadsheetItems) {
-            total = total + (item.amount * (item.manpower + item.material));
-        }
-        return total;
-    }
-    totalItemValue(manpower: number, material: number, amount: number): number {
-        var total = amount * (manpower + material);
-        return total;
-    }
-    trackByFn(index: number, item: any) {
-        return item.id;
-    }
-    SelectLevel(level: Level) {
-        var _level = this.levels.find(l => l.levelId == level.levelId);
-        if (_level != undefined) {
-            this.selectedLevel = _level;
-        }
-        else {
-            alert("Erro ao identificar o nível selecionado.");
-        }
-    }
     AddLevel() {
         console.clear();
         console.log("Criando novo nível.");
@@ -187,113 +143,4 @@ export class SpreadsheetComponent implements OnInit {
             }
         )
     }
-    EditLevel() {
-        this.levelService.updateLevel(this.selectedLevel.levelId, this.selectedLevel).subscribe(
-            result => {
-                console.log("Nível atualizado com sucesso.");
-            },
-            err => {
-                console.error("Houve um erro ao tentar atualizar o nível.", err);
-            }
-        )
-    }
-    DeleteLevel() {
-        this.levelService.removeLevel(this.selectedLevel.levelId).subscribe(
-            result => {
-                console.log("Nível deletado com sucesso.");
-            },
-            err => {
-                console.error("Houve um erro ao tentar deletar o nível", err);
-            }
-        )
-    }
-
-    SelectSpreadsheetItem(item: SpreadsheetItem) {
-        var _levelIndex = this.levels.findIndex(l => l.levelId == item.levelId);
-        var _itemIndex = this.levels[_levelIndex].spreadsheetItems.findIndex(
-            i => i.spreadsheetitemId == item.spreadsheetitemId);
-        this.selectedSpreadsheetItem = this.levels[_levelIndex].spreadsheetItems[_itemIndex];
-    }
-    allSpreadsheetItemsOfLevel(level: Level): SpreadsheetItem[] {
-        this.spreadsheetItemService.findSpreadsheetItems(level).subscribe(
-            result => {
-                let _levelIndex = this.levels.findIndex(l => l.levelId == level.levelId);
-                this.levels[_levelIndex].spreadsheetItems = result;
-                return this.levels[_levelIndex].spreadsheetItems;
-            },
-            err => {
-                console.error("Ocorreu um erro ao carregar os itens da planilha.");                             
-            }
-        )
-        return [];
-        // let _levelIndex = this.levels.findIndex(l => l.levelId == level.levelId);
-        // let spreadsheetItems: SpreadsheetItem[] = this.levels[_levelIndex].spreadsheetItems;
-        // return spreadsheetItems;
-    }
-    addSpreadsheetItem() {
-        let _spreadsheetItem: SpreadsheetItem = new SpreadsheetItem();
-        _spreadsheetItem.description = 'novo item';
-        _spreadsheetItem.amount = 0;
-        _spreadsheetItem.code = 'código';
-        _spreadsheetItem.levelId = this.selectedLevel.levelId;
-        _spreadsheetItem.manpower = 0;
-        _spreadsheetItem.material = 0;
-        _spreadsheetItem.source = '';
-        _spreadsheetItem.unit = '';
-
-        this.spreadsheetItemService.createSpreadsheetItem(_spreadsheetItem).subscribe(
-            result => {
-                const _levelIndex = this.levels.findIndex(l => l.levelId == this.selectedLevel.levelId);
-                var _spreadsheetItem = result;
-                this.levels[_levelIndex].spreadsheetItems.push(_spreadsheetItem);
-            },
-            err =>{
-                console.error("Ocorreu um erro ao tentar criar o item da planilha.", err);                
-            }
-        )
-    }
-    EditSpreadsheetItemSave() {
-        this.spreadsheetItemService.updateSpreadsheetItem(
-            this.selectedSpreadsheetItem.spreadsheetitemId, this.selectedSpreadsheetItem).subscribe(
-                result => {
-                    // let _spreadsheetItem: SpreadsheetItem = result;
-                    // var _levelIndex = this.levels.findIndex(l => l.levelId == _spreadsheetItem.levelId);
-                    console.log("Item criado com sucesso.");
-
-                },
-                err => {
-                    console.error("Ocorreu um erro ao tentar editar o item.", err);
-                    alert("Erro ao editar o item.");
-                }
-            )
-    }
-    spreadsheetItemDelete(item: SpreadsheetItem) {
-        this.spreadsheetItemService.removeSpreadsheetItem(item.spreadsheetitemId).subscribe(
-            result => {
-                var _levelId = item.levelId;
-                var _levelIndex = this.levels.findIndex(l => l.levelId == _levelId);
-                var _itemIndex = this.levels[_levelIndex].spreadsheetItems.findIndex(
-                    i => i.spreadsheetitemId == item.spreadsheetitemId);
-                this.levels[_levelIndex].spreadsheetItems.splice(_itemIndex, 1);
-                console.log("deletado com sucesso.");
-                alert("Item deletado.");
-            },
-            err => {
-                console.log("Ocorreu um erro ao deletar.", err);
-            }
-        )
-    }
-
-    
-
-
 }
-// public spreadsheetId: number,
-//     public name: string,
-//     public title: string,
-//     public description: string,
-//     public author: string,
-//     public date: Date,
-//     public encumberType: string,
-//     public contractId: number,
-//     public additiveId: number,

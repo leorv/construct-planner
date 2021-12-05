@@ -45,7 +45,8 @@ namespace Repository.Repositories
             // Assim, verificar se a implementação abaixo seria boa, ou se
             // existe uma maneira melhor de implementar.
             return dbset.Where(predicate);
-        }        
+        }
+        
 
         public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {

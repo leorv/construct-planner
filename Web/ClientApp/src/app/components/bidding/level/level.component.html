@@ -1,1 +1,146 @@
-<p>level works!</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col-1">Fonte</th>
+            <th scope="col-1">Referência</th>
+            <th scope="col-3">Descrição</th>
+            <th scope="col-1">Unidade</th>
+            <th scope="col-1">Quantidade</th>
+            <th scope="col-1">R$ M.O.</th>
+            <th scope="col-1">R$ Material</th>
+            <th scope="col-1">R$ Total</th>
+            <th scope="col-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="8"> {{ level.levelId }} - {{ level.title }} </td>
+            <td><a class="btn btn-primary" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#editModal'+level.levelId">Editar</a>
+                <a class="btn btn-danger" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#deleteModal'+level.levelId">Excluir</a>
+            </td>
+        </tr>
+        <tr><a class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#addItemModal'+level.levelId">
+                Novo item</a>
+        </tr>
+        <tr *ngIf="showSpreadsheetItem">
+            <app-spreadsheet-item *ngFor="let item of spreadsheetItems" [item]="item"
+                (remove)="showSpreadsheetItem = false">
+            </app-spreadsheet-item>
+        </tr>
+        <tr>
+            <td> {{ totalLevelValue() | currency: 'BRL' }} </td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+
+<!-- Edit Level Modal -->
+<div class="modal fade" [id]="'editModal'+ level.levelId" tabindex="-1" aria-labelledby="editModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Editar Nível</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating">
+                    <p>{{ level.levelId }}</p>
+                    <input type="text" name="levelTitle" class="form-control" id="floatingLevelTitle"
+                        placeholder="Título" [(ngModel)]="level.title" #levelTitle="ngModel">
+                    <label for="floatingLevelTitle">Título</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" data-bs-dismiss="modal"
+                    (click)="editLevel()">
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Level Modal -->
+<div class="modal fade" [id]="'deleteModal'+level.levelId" tabindex="-1" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Excluir Nível</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que quer deletar este nível?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" data-bs-dismiss="modal"
+                    (click)="deleteLevel()">
+                    Deletar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Item Modal -->
+<div class="modal fade" [id]="'addItemModal'+level.levelId" tabindex="-1" aria-labelledby="addItemModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Adicionar item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating">
+                    <input type="text" name="itemSource" class="form-control" id="floatingItemSource"
+                        placeholder="Fonte" [(ngModel)]="item.source" #itemSource="ngModel">
+                    <label for="floatingItemSource">Fonte</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="itemCode" class="form-control" id="floatingItemCode" placeholder="Código"
+                        [(ngModel)]="item.code" #itemCode="ngModel">
+                    <label for="floatingItemCode">Código</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="itemDescription" class="form-control" id="floatingItemDescription"
+                        placeholder="Descrição" [(ngModel)]="item.description" #itemDescription="ngModel">
+                    <label for="floatingItemDescription">Descrição</label>
+                </div>
+                <div class="form-floating">
+                    <input type="number" name="itemAmount" class="form-control" id="floatingItemAmount"
+                        placeholder="Quantidade" [(ngModel)]="item.amount" #itemAmount="ngModel">
+                    <label for="floatingItemAmount">Quantidade</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="itemUnit" class="form-control" id="floatingItemUnit" placeholder="Unidade"
+                        [(ngModel)]="item.unit" #itemUnit="ngModel">
+                    <label for="floatingItemUnit">Unidade</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="itemManpower" class="form-control" id="floatingItemManpower"
+                        placeholder="Mão de obra" [(ngModel)]="item.manpower" #itemManpower="ngModel">
+                    <label for="floatingItemManpower">Mão de Obra</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="itemMaterial" class="form-control" id="floatingItemMaterial"
+                        placeholder="Material" [(ngModel)]="item.material" #itemMaterial="ngModel">
+                    <label for="floatingItemMaterial">Material</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" data-bs-dismiss="modal"
+                    (click)="addSpreadsheetItem(item)">
+                    Adicionar item
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

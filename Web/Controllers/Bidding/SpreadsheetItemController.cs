@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Repository.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,11 +21,11 @@ namespace Web.Controllers.Bidding
 
         // GET: api/<SpreadsheetItemController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                return Ok(unitOfWork.SpreadsheetItemRepository.GetAll());
+                return Ok(await unitOfWork.SpreadsheetItemRepository.GetAllAsync());
             }
             catch (Exception ex)
             {
@@ -34,11 +35,11 @@ namespace Web.Controllers.Bidding
 
         // GET api/<SpreadsheetItemController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             try
             {
-                return Ok(unitOfWork.SpreadsheetItemRepository.Get(id));
+                return Ok(await unitOfWork.SpreadsheetItemRepository.GetAsync(id));
             }
             catch (Exception ex)
             {
@@ -48,17 +49,31 @@ namespace Web.Controllers.Bidding
 
         // POST api/<SpreadsheetItemController>
         [HttpPost]
-        public IActionResult Post([FromBody] SpreadsheetItem spreadsheetItem)
+        public async Task<IActionResult> Post([FromBody] SpreadsheetItem spreadsheetItem)
         {
             try
             {
-                unitOfWork.SpreadsheetItemRepository.Add(spreadsheetItem);
-                unitOfWork.SaveChanges();
+                unitOfWork.SpreadsheetItemRepository.AddAsync(spreadsheetItem);
+                await unitOfWork.SaveChangesAsync();
                 return Created("api/[controller]", spreadsheetItem); // 201
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message); // 404
+            }
+        }
+
+        // POST: api/<SpreadsheetItemController>/GetAll
+        [HttpPost("GetAll")]
+        public IActionResult GetAll([FromBody] int id)
+        {
+            try
+            {
+                return Ok(unitOfWork.SpreadsheetItemRepository.Find(i => i.LevelId == id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -68,7 +83,7 @@ namespace Web.Controllers.Bidding
         {
             try
             {
-                if (spreadsheetItem == null)
+                if (spreadsheetItem == null || spreadsheetItem.SpreadsheetItemId != id)
                 {
                     return BadRequest();
                 }

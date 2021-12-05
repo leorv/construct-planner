@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -36,14 +37,14 @@ namespace Web.Controllers.Bidding
 
         // POST api/<ContractController>
         [HttpPost]
-        public IActionResult Post([FromBody]
+        public async Task<IActionResult> Post([FromBody]
         // [Bind("Name, Object, Number, Year, Description, Date, Closed, ContractedUserId, UserId")]
         Contract contract)
         {
             try
             {
-                unitOfWork.ContractRepository.Add(contract); 
-                unitOfWork.SaveChanges();
+                unitOfWork.ContractRepository.AddAsync(contract); 
+                await unitOfWork.SaveChangesAsync();
                 return Created("api/[controller]", contract); // 201
             }
             catch (Exception ex)

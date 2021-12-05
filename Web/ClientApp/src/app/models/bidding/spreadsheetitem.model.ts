@@ -1,5 +1,5 @@
 export class SpreadsheetItem {
-    public spreadsheetitemId: number = 0;
+    public spreadsheetItemId: number = 0;
     public source: string = '';
     public code: string = '';
     public description: string = '';
