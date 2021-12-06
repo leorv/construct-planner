@@ -21,16 +21,19 @@
                     [attr.data-bs-target]="'#deleteModal'+level.levelId">Excluir</a>
             </td>
         </tr>
-        <tr><a class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#addItemModal'+level.levelId">
-                Novo item</a>
-        </tr>
-        
-            <app-spreadsheet-item [item]="item" *ngFor="let item of spreadsheetItems"
-                (remove)='removeItem($event)'>
-            </app-spreadsheet-item>
-        
         <tr>
-            <td> {{ totalLevelValue() | currency: 'BRL' }} </td>
+            <td colspan="9"><a class="btn btn-primary" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#addItemModal'+level.levelId">
+                    Novo item</a>
+            </td>
+        </tr>
+        <tr app-spreadsheet-item *ngFor="let item of spreadsheetItems" [item]="item" (remove)='removeItem($event)'>
+        </tr>
+        <tr>
+            <td colspan="7" class="text-end"><strong>Subtotal:</strong></td>
+            <td colspan="2">
+                {{ totalLevelValue() | currency: 'BRL':'symbol':'1.2-2':'pt' }}
+            </td>
         </tr>
     </tbody>
 </table>
@@ -123,7 +126,7 @@
                 </div>
                 <div class="form-floating">
                     <input type="text" name="itemManpower" class="form-control" id="floatingItemManpower"
-                        placeholder="Mão de obra" [(ngModel)]="item.manpower" #itemManpower="ngModel">
+                        placeholder="Mão de obra" [(ngModel)]="item.manPower" #itemManpower="ngModel">
                     <label for="floatingItemManpower">Mão de Obra</label>
                 </div>
                 <div class="form-floating">

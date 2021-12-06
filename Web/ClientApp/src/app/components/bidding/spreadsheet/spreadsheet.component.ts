@@ -135,4 +135,8 @@ export class SpreadsheetComponent implements OnInit {
             }
         )
     }
+    removeLevel(id: number) {
+        var _index = this.levels.findIndex(l => l.levelId == id);
+        this.levels.splice(_index, 1);
+    }
 }

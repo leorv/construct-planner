@@ -3,13 +3,14 @@ import { SpreadsheetItemService } from './../../../services/biddings/spreadsheet
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-    selector: 'app-spreadsheet-item',
+    selector: '[app-spreadsheet-item]',
     templateUrl: './spreadsheet-item.component.html',
     styleUrls: ['./spreadsheet-item.component.css']
 })
 export class SpreadsheetItemComponent implements OnInit {
     @Input() item: SpreadsheetItem = new SpreadsheetItem();
     @Output() remove = new EventEmitter<number>();
+    
 
     constructor(
         private spreadsheetItemService: SpreadsheetItemService
@@ -20,7 +21,7 @@ export class SpreadsheetItemComponent implements OnInit {
     }
 
     totalItemValue(): number{
-        return this.item.amount * (this.item.manpower + this.item.material);
+        return this.item.amount * (this.item.manPower + this.item.material);
     }
 
     spreadsheetItemEdit(){

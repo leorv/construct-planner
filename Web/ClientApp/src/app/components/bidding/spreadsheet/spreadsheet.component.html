@@ -20,7 +20,7 @@
 <hr>
 <a class="btn btn-primary" (click)="AddLevel()">Adicionar Nível</a>
 
-<app-level *ngFor="let level of levels" [level]="level">
+<app-level *ngFor="let level of levels" [level]="level" (remove)='removeLevel($event)'>
     
 </app-level>
         

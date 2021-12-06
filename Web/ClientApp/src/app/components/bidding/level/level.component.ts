@@ -1,7 +1,7 @@
 import { SpreadsheetItemService } from './../../../services/biddings/spreadsheet-item.service';
 import { LevelService } from './../../../services/biddings/level.service';
 import { Level } from './../../../models/bidding/level.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SpreadsheetItem } from 'src/app/models/bidding/spreadsheetitem.model';
 
 @Component({
@@ -13,6 +13,7 @@ export class LevelComponent implements OnInit {
     @Input() level: Level = new Level();
     spreadsheetItems: SpreadsheetItem[] = [];
     item: SpreadsheetItem = new SpreadsheetItem();
+    @Output() remove = new EventEmitter<number>();
 
     constructor(
         private levelService: LevelService,
@@ -26,7 +27,7 @@ export class LevelComponent implements OnInit {
         var total:number = 0;
         for(let i = 0; i < this.spreadsheetItems.length; i++){
             var _itemTotal: number = this.spreadsheetItems[i].amount *
-                (this.spreadsheetItems[i].manpower + this.spreadsheetItems[i].material);
+                (this.spreadsheetItems[i].manPower + this.spreadsheetItems[i].material);
             total = total + _itemTotal;
         }
         return total;
@@ -48,6 +49,7 @@ export class LevelComponent implements OnInit {
     deleteLevel() {
         this.levelService.removeLevel(this.level.levelId).subscribe(
             result => {
+                this.remove.emit(this.level.levelId);
                 console.log("Nível deletado com sucesso.");
             },
             err => {
@@ -55,11 +57,12 @@ export class LevelComponent implements OnInit {
             }
         )
     }
-
     loadItems() {
         this.spreadsheetItemService.findSpreadsheetItems(this.level).subscribe(
             result => {
                 this.spreadsheetItems = result;
+                console.log(this.spreadsheetItems);
+                
                 console.log("Sucesso ao buscar os itens do nível.");
             },
             err => {
@@ -67,7 +70,6 @@ export class LevelComponent implements OnInit {
             }
         )
     }
-
     addSpreadsheetItem(item: SpreadsheetItem) {
         item.levelId = this.level.levelId;
         this.spreadsheetItemService.createSpreadsheetItem(item).subscribe(

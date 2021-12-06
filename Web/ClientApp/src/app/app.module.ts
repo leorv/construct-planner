@@ -2,7 +2,7 @@ import { FileUploadService } from './components/admin/file-upload-service/file-u
 import { SpreadsheetItemService } from './services/biddings/spreadsheet-item.service';
 import { SpreadsheetService } from './services/biddings/spreadsheet.service';
 import { ClauseService } from './services/biddings/clause.service';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
@@ -36,6 +36,10 @@ import { CreateUserComponent } from './components/user/create-user/create-user.c
 import { DataTransferService } from './services/data-transfer.service';
 import { SourceUploadComponent } from './components/admin/source-upload/source-upload.component';
 import { EditSpreadsheetComponent } from './components/bidding/spreadsheet/edit-spreadsheet/edit-spreadsheet/edit-spreadsheet.component';
+
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr)
 
 
 @NgModule({
@@ -79,7 +83,8 @@ import { EditSpreadsheetComponent } from './components/bidding/spreadsheet/edit-
         RouteGuard,
         FileUploadService,
         DataTransferService,
-        { provide: 'BASE_URL', useFactory: getBaseUrl }
+        { provide: 'BASE_URL', useFactory: getBaseUrl },
+        { provide: LOCALE_ID, useValue: 'pt'}
     ],
     bootstrap: [AppComponent]
 })
