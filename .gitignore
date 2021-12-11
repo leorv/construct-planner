@@ -30,6 +30,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+ClientApp/.angular
 msbuild.log
 msbuild.err
 msbuild.wrn
