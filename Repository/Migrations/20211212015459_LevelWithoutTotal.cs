@@ -2,7 +2,7 @@
 
 namespace Repository.Migrations
 {
-    public partial class PropTotalOfLevel : Migration
+    public partial class LevelWithoutTotal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

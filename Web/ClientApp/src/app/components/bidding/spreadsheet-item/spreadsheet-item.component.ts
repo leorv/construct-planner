@@ -27,7 +27,7 @@ export class SpreadsheetItemComponent implements OnInit {
     spreadsheetItemEdit(){
         this.spreadsheetItemService.updateSpreadsheetItem(this.item.spreadsheetItemId, this.item).subscribe(
             result => {
-                console.log("Item editado com sucesso."); 
+                console.log("Item editado com sucesso.");
             },
             err => {
                 console.error("Ocorreu um erro ao tentarmos editar o item.");                

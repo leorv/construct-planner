@@ -6,6 +6,7 @@
 <td class="text-end">{{ item.manPower | currency: 'BRL':'symbol':'1.2-2':'pt' }}</td>
 <td class="text-end">{{ item.material | currency: 'BRL':'symbol':'1.2-2':'pt' }}</td>
 <td class="text-end">{{ totalItemValue() | currency: 'BRL':'symbol':'1.2-2':'pt'}}</td>
+
 <td>
     <a class="btn btn-secondary" data-bs-toggle="modal" [attr.data-bs-target]="'#editItemModal'+item.spreadsheetItemId">
         Editar

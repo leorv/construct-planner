@@ -9,8 +9,8 @@ using Repository.Context;
 namespace Repository.Migrations
 {
     [DbContext(typeof(ConstructContext))]
-    [Migration("20211212000612_PropTotalOfLevel")]
-    partial class PropTotalOfLevel
+    [Migration("20211212015459_LevelWithoutTotal")]
+    partial class LevelWithoutTotal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

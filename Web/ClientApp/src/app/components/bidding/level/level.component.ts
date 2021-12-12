@@ -1,7 +1,7 @@
 import { SpreadsheetItemService } from './../../../services/biddings/spreadsheet-item.service';
 import { LevelService } from './../../../services/biddings/level.service';
 import { Level } from './../../../models/bidding/level.model';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { SpreadsheetItem } from 'src/app/models/bidding/spreadsheetitem.model';
 
 @Component({
