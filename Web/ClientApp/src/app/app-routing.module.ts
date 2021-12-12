@@ -29,8 +29,6 @@ const routes: Routes = [
             { path: 'clauses', component: ClauseComponent },
             { path: 'spreadsheets', component: SpreadsheetComponent },
             { path: 'edit-spreadsheet', component: EditSpreadsheetComponent }
-
-
             // TODO: implementar medições.
         ]
     }

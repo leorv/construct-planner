@@ -139,4 +139,35 @@ export class SpreadsheetComponent implements OnInit {
         var _index = this.levels.findIndex(l => l.levelId == id);
         this.levels.splice(_index, 1);
     }
+    totalSpreadsheetValue(): number{
+        var total:number = 0;
+
+        for (let i = 0; i < this.levels.length; i++){
+            this.getItemsOfLevel(this.levels[i]);
+            for (let j = 0; j < this.levels[i].spreadsheetItems.length; j++){
+                total = this.levels[i].spreadsheetItems[j].amount *
+                    (this.levels[i].spreadsheetItems[j].manPower 
+                        + this.levels[i].spreadsheetItems[j].material);
+            }
+        }
+        
+        return total;
+    }
+    getItemsOfLevel(level: Level){
+        for(let i = 0; i < this.levels.length; i++){
+            this.spreadsheetItemService.findSpreadsheetItems(level).subscribe(
+                result => {
+                    let _index = this.levels.findIndex(l => l.levelId == level.levelId);
+                    
+                    this.levels[_index].spreadsheetItems = result;
+                    console.log("itens do level ");
+                    console.log(_index);
+                },
+                err => {
+                    console.error("Ocorreu um erro ao buscar os itens do nível.", err);
+                }
+            )
+        }
+
+    }
 }

@@ -6,25 +6,29 @@
             <th scope="col-3">Descrição</th>
             <th scope="col-1">Unidade</th>
             <th scope="col-1">Quantidade</th>
-            <th scope="col-1">R$ M.O.</th>
-            <th scope="col-1">R$ Material</th>
-            <th scope="col-1">R$ Total</th>
+            <th scope="col-1">M.O.</th>
+            <th scope="col-1">Material</th>
+            <th scope="col-1">Total</th>
             <th scope="col-2"></th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td colspan="8"> {{ level.levelId }} - {{ level.title }} </td>
-            <td><a class="btn btn-primary" data-bs-toggle="modal"
-                    [attr.data-bs-target]="'#editModal'+level.levelId">Editar</a>
-                <a class="btn btn-danger" data-bs-toggle="modal"
-                    [attr.data-bs-target]="'#deleteModal'+level.levelId">Excluir</a>
+            <td colspan="8"><strong> {{ level.title }} </strong></td>
+            <td>
+                <a class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#addItemModal'+level.levelId">
+                    Novo item
+                </a>
             </td>
-        </tr>
-        <tr>
-            <td colspan="9"><a class="btn btn-primary" data-bs-toggle="modal"
-                    [attr.data-bs-target]="'#addItemModal'+level.levelId">
-                    Novo item</a>
+            <td>
+                <a class="btn btn-secondary" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#editModal'+level.levelId">Editar
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#deleteModal'+level.levelId">Excluir
+                </a>
             </td>
         </tr>
         <tr app-spreadsheet-item *ngFor="let item of spreadsheetItems" [item]="item" (remove)='removeItem($event)'>
@@ -32,7 +36,13 @@
         <tr>
             <td colspan="7" class="text-end"><strong>Subtotal:</strong></td>
             <td colspan="2">
-                {{ totalLevelValue() | currency: 'BRL':'symbol':'1.2-2':'pt' }}
+                <strong>
+                    {{ totalLevelValue() | currency: 'BRL':'symbol':'1.2-2':'pt' }}
+                </strong>
+            </td>
+            <td>
+            </td>
+            <td>
             </td>
         </tr>
     </tbody>

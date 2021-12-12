@@ -3,6 +3,7 @@ export class Level {
     public levelId: number = 0;
     public name: string = '';
     public title: string = '';
+    public total: number = 0;
     public spreadsheetId: number = 0;
     public spreadsheetItems: SpreadsheetItem[] = [];
 

@@ -1,8 +1,8 @@
 <h1>Detalhes do contrato</h1>
 <hr>
-<h2>Tomador: {{ ownerUser.name }} </h2>
-<h2>Contratado: {{ contractedUser.name }} </h2>
-<h2>Objeto: {{ contract.object }}</h2>
+<p>Tomador: {{ ownerUser.name }} </p>
+<p>Contratado: {{ contractedUser.name }} </p>
+<p>Objeto: {{ contract.object }}</p>
 <div>
 
         <!-- <a class="btn btn-primary" [contract]="contract" [routerLink]="[ 'contract-details/contract.contractId/clauses' ]"
@@ -14,10 +14,10 @@
 
         <ul class="nav nav-tabs">
             <li class="nav-item active">
-                <a class="nav-link" routerLink="clauses" (click)="shareData(contract)" >Cláusulas </a>
+                <h2 class="nav-link" routerLink="clauses" (click)="shareData(contract)" >Cláusulas </h2>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="spreadsheets" (click)="shareData(contract)">Planilhas </a>
+                <h2 class="nav-link" routerLink="spreadsheets" (click)="shareData(contract)">Planilhas </h2>
             </li>
         </ul>
     <router-outlet></router-outlet>

@@ -5,14 +5,19 @@
 <td class="text-end">{{ item.amount | number:'1.2-2' }}</td>
 <td class="text-end">{{ item.manPower | currency: 'BRL':'symbol':'1.2-2':'pt' }}</td>
 <td class="text-end">{{ item.material | currency: 'BRL':'symbol':'1.2-2':'pt' }}</td>
-<td class="text-end"> {{ totalItemValue() | currency: 'BRL':'symbol':'1.2-2':'pt'}} </td>
+<td class="text-end">{{ totalItemValue() | currency: 'BRL':'symbol':'1.2-2':'pt'}}</td>
 <td>
-    <a class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#editItemModal'+item.spreadsheetItemId">
+    <a class="btn btn-secondary" data-bs-toggle="modal" [attr.data-bs-target]="'#editItemModal'+item.spreadsheetItemId">
         Editar
     </a>
+</td>
+<td>
     <a class="btn btn-danger" (click)="spreadsheetItemDelete(item)">
         Deletar
     </a>
+</td>
+<td>
+
     <!-- Edit Item Modal -->
     <div class="modal fade" [id]="'editItemModal'+item.spreadsheetItemId" tabindex="-1"
         aria-labelledby="editItemModalLabel" aria-hidden="true">

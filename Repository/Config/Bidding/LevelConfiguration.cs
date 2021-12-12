@@ -29,6 +29,9 @@ namespace Repository.Config.Bidding
                 .HasMaxLength(256)
                 .IsRequired();
 
+            builder.Property(l => l.Total)
+                .HasColumnType("BIGINT");
+
             builder.HasOne(s => s.Spreadsheet)
                 .WithMany(l => l.Levels)
                 .HasForeignKey(s => s.SpreadsheetId);

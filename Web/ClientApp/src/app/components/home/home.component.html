@@ -1,3 +1,39 @@
-<h1>Olá, mundo!</h1>
-<p>To conseguindo.</p>
-<hr>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Bem-Vindo!</h1>
+            <p>
+                A Constru+ é um App Web onde você pode criar contratos e planilhas da construção civil.
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg" role="button">Ver Contratos >></a>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-6">
+                <h2>Crie contratos</h2>
+                <p>
+                    Crie seus textos, cláusulas e toda a documentação para geração e arquivos de contrato.
+                </p>
+                <p>
+                    <a class="btn btn-secondary" [routerLink]="['/contracts']">
+                        Ver detalhes
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h2>Planilhas Orçamentárias</h2>
+                <p>
+                    Preencha planilha, crie níveis de serviços, tenha a soma de cada item de sua obra.
+                </p>
+                <p>
+                    <a class="btn btn-secondary" [routerLink]="['/contracts']">
+                        Ver detalhes
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
