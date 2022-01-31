@@ -8,39 +8,40 @@
 <!-- <router-outlet></router-outlet> -->
 
 <hr>
-<P>Selecione a planilha:</P>
-<div>
-    <button type="button" class="btn btn-primary" *ngFor="let spreadsheet of spreadsheets"
-        (click)="selectSpreadsheet(spreadsheet.spreadsheetId)">
-        {{ spreadsheet.name }}
-    </button>
+<p>Para exibir as informações, por favor, selecione a planilha:</p>
+
+<ul>
+    <li *ngFor="let spreadsheet of spreadsheets">
+        <a (click)="selectSpreadsheet(spreadsheet.spreadsheetId)">
+            {{ spreadsheet.name }}
+        </a>
+    </li>
+</ul>
+
+
+<hr>
+<div class="spreadsheet">
+    <a class="btn btn-primary" (click)="AddLevel()">Adicionar Nível</a>
+    <app-level *ngFor="let level of levels" [level]="level" (remove)='removeLevel($event)'></app-level>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="7"></td>
+                <td class="text-end" colspan="2">
+                    <strong>
+                        <h2>Total: {{ totalSpreadsheetValue() | currency: 'BRL':'symbol':'1.2-2':'pt' }} </h2>
+                    </strong>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
 <hr>
-<a class="btn btn-primary" (click)="AddLevel()">Adicionar Nível</a>
-
-<app-level *ngFor="let level of levels" [level]="level" (remove)='removeLevel($event)'>
-    
-</app-level>
-<table>
-    <tbody>
-        <tr>
-            <td colspan="7"></td>
-            <td class="text-end" colspan="2">
-                <strong>
-                   <h2>Total: {{ totalSpreadsheetValue() | currency: 'BRL':'symbol':'1.2-2':'pt' }} </h2>
-                </strong>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-        </tr>
-    </tbody>
-</table>
-        
-<hr>
-<div>
+<div class="square">
     <button type="button" class="btn btn-danger" (click)="deleteSpreadsheet()">
         Excluir planilha
     </button>

@@ -1,6 +1,4 @@
 import { Router } from '@angular/router';
-import { LevelService } from './../../../services/biddings/level.service';
-import { SpreadsheetItemService } from './../../../services/biddings/spreadsheet-item.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Contract } from 'src/app/models/bidding/contract.model';
@@ -10,6 +8,8 @@ import { SpreadsheetItem } from './../../../models/bidding/spreadsheetitem.model
 
 import { DataTransferService } from './../../../services/data-transfer.service';
 import { SpreadsheetService } from './../../../services/biddings/spreadsheet.service';
+import { LevelService } from './../../../services/biddings/level.service';
+import { SpreadsheetItemService } from './../../../services/biddings/spreadsheet-item.service';
 
 @Component({
     selector: 'app-spreadsheet',

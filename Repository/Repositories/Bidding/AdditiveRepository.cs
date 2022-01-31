@@ -15,7 +15,5 @@ namespace Repository.Repositories.Bidding
         }
 
         // Aqui implementamos os métodos específicos de Additives. Por exemplo, GetDetalhes. etc.
-
-
     }
 }
